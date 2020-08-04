@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <base target="_blank" />
+
+        <title>upload</title>
+
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="referrer" content="never">
+
+        <link rel="shortcut icon" href="https://img9.doubanio.com/view/group/sqxs/public/3bd4fe9af2b65f6.jpg" type="image/x-icon" />
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.1.7/dist/vuetify.min.css">
+
+        <link rel="stylesheet" href="https://spin.js.org/spin.css" >
+        <link rel="stylesheet" href="https://cdn.bootcss.com/limonte-sweetalert2/8.11.8/sweetalert2.min.css">
+
+        <style>
+            *{
+                padding:0;
+                margin:0;
+            }
+            #loading{
+                pointer-events: none;    
+                position: fixed;
+                left: 50%;
+                top: 50%;
+            }
+        </style>
+</head>
+
+<body>
+        <div id="loading"> </div>
+
+        <main>
+            <v-app id="app" data-app="app">
+                <section>
+                    <p>云函数-cos</p>
+                    <input id="file1" type="file"  multiple @change="upload($event.target.files)">
+                    <v-file-input 
+                        label="Avatar"
+                        chips 
+                        multiple 
+                        show-size 
+                        counter
+                        accept="image/*" 
+                        placeholder="Pick an avatar"                        
+                        @change="upload"
+                    >
+                    </v-file-input>
+                    <br>
+
+                    <p>临时token直接上传cos</p>
+                    <input id="file" type="file" @change="upload1($event.target.files)" multiple>
+                    <br> 
+
+                    <p>one drive 分片上传</p>
+                    <input id="file2" type="file" >
+
+                </section>
+
+
+
+                  <div class="text-center">
+                    <v-dialog v-model="dialog" width="500" >
+
+                      <v-card>
+                            <v-card-title class="headline lighten-2" primary-title > 
+                                <a :href='"//"+current_img'>
+                                                 <v-btn class="ma-2" text icon color="red lighten-2" v-on="on">
+                                                  <v-icon>mdi-tennis</v-icon>
+                                                </v-btn>
+                                </a>
+                            </v-card-title>
+
+                            <v-divider></v-divider>
+
+                            <v-card-text>
+                                <v-img
+                                  :src="'//'+current_img"
+                                  :lazy-src="'//'+current_img"
+                                  aspect-ratio="1"
+                                  class="grey lighten-2"
+                                  max-width="500"
+                                  max-height="500"                                      
+                                >
+                                </v-img>
+                                <p>{{current_img}} </p>    
+                            </v-card-text>
+                            <v-divider></v-divider>
+                                <v-flex class="text-center">
+
+                                          <v-btn color="primary" text @click="remove(current_img)">
+                                              <v-icon > delete </v-icon>                                  
+                                          </v-btn>
+
+                                          <v-btn class="ma-2" text icon color="blue lighten-2">
+                                            <v-icon>mdi-thumb-up</v-icon>
+                                          </v-btn>
+
+                                          <v-btn class="ma-2" text icon color="red lighten-2">
+                                            <v-icon>mdi-thumb-down</v-icon>
+                                          </v-btn>   
+
+                                          <v-btn class="ma-2" text icon color="blue lighten-2" >
+                                              <v-icon>email</v-icon>
+                                          </v-btn>
+
+                                          <v-btn class="ma-2" text icon color="red lighten-2" >
+                                              <v-icon>star</v-icon>
+                                          </v-btn>
+                                          <v-btn class="ma-2" text icon color="red lighten-2" v-on="on">
+                                              <v-icon>share</v-icon>
+                                          </v-btn>
+
+                                 </v-flex>
+                                 <v-divider></v-divider>
+                                 <v-card-actions>
+                                 <v-spacer></v-spacer>
+  
+                              <v-btn color="primary" text @click="dialog = false"> ok </v-btn>
+                            </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+
+
+                  </div>
+
+              <v-row>
+                  <v-btn color="primary" text @click="init"> load </v-btn>
+              </v-row>
+
+
+                <section v-if="img.length>0">
+                      <v-row>
+                        <v-col cols="12" sm="12" >
+                          <v-card>
+                            <v-container fluid>
+                              <v-row>
+                                <v-col v-for="n,i in img" :key="'img'+i" class="d-flex child-flex" cols="2" @click="current_img = n ;dialog=true" > 
+                                    <v-card flat tile class="d-flex" >
+                                    <v-img :src="'//'+n" :lazy-src="'//'+n" aspect-ratio="1" class="grey lighten-2" >
+                                          <template v-slot:placeholder>
+                                            <v-row class="fill-height ma-0" align="center" justify="center" >
+                                                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                            </v-row>
+                                          </template>
+                                    </v-img>
+                                  </v-card>
+                                </v-col>
+                              </v-row>
+                            </v-container>
+                          </v-card>
+                        </v-col>
+                      </v-row>                
+                </section>
+
+
+
+            </v-app>
+        </main>
+    </body>
+
+    <script src="https://cdn.bootcss.com/spin.js/2.3.2/spin.min.js"></script>
+    <script src="https://cdn.bootcss.com/rxjs/6.5.2/rxjs.umd.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.bootcss.com/ramda/0.26.1/ramda.min.js"></script>
+    <script src="https://cdn.bootcss.com/localforage/1.7.3/localforage.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://cdn.bootcss.com/superagent/4.1.0-beta.1/superagent.min.js"></script>
+    <script src="https://cdn.bootcss.com/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+
+    <script src="js/cos-js-sdk-v5.min.js"></script>
+    <script src="js/fp.js"> </script>
+    <script src="js/cos_upload.js"> </script>
+    <script src="js/upload.js"> </script>
+    <script src="js/index.js"> </script>
+</html>
+

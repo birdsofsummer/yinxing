@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <a href="io.html">io</a>
+        <button type="button" onclick="test1()">sse</button>
+        <button type="button" onclick="stop_sse()">close sse</button>
+        <button type="button" onclick="test2()">websocket</button>
+        <p id="test" value="ws"></p>
+        <p id="ws"></p>
+    </section>
+    <div id="container" style="padding: 24px"></div>
+
+</body>
+
+<script type="text/javascript">
+    sleep=(n=1)=>new Promise((a,b)=>setTimeout(a,n*1000))
+    token=moment.now() 
+    clean=()=>[...document.querySelectorAll('p')].map(x=>x.innerHTML="") 
+    write=(x="",id="#test")=>{
+        t=document.querySelector(id)
+        t.innerHTML+=`${x}<br>`
+    }
+    test1=()=>{
+        clean()
+        source = new EventSource('/stream?token='+token)
+        write("token:"+token)
+        source.onopen =()=> write('open')
+        source.onmessage = (e)=>{
+            let {data,orgin,type,timeStamp}=e
+            let d={data,orgin,type,timeStamp}
+            console.log(e)
+            console.log(JSON.parse(data))
+            html=`${JSON.stringify(d)}`
+            write(html)
+        }
+        source.onerror = ()=> write('close')
+   }
+   stop_sse=()=>{
+        source.close()
+   }
+   test2=()=>{
+        clean()
+        // "wss://echo.websocket.org"
+        u=location.href.replace("http",'ws')+ `?token=${token}`
+        var ws = new WebSocket(u);
+        i=0
+        send=(x={})=>ws.send(JSON.stringify(x));
+        ws.onopen = function(evt) { 
+          console.log("Connection open ..."); 
+          send({i,now:0})
+        };
+        ws.onmessage =async function(evt) {
+            i++
+            console.log( "Received Message: " + evt.data);
+            write(evt.data ,"#ws")
+            d={token,i,now:moment.now()}
+            console.log(d)
+            await sleep(1)
+            send(d)
+          //ws.close();
+        };
+        ws.onclose = function(evt) {
+          console.log("Connection closed.");
+        };      
+   }
+</script>
+
+</html>

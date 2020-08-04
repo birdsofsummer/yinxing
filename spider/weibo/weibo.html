@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <title>微博</title>
+    <!--base href="https://m.weibo.cn" /--> 
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link href="https://cdn.bootcdn.net/ajax/libs/vuetify/2.3.7/vuetify.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+
+<style type="text/css" media="all">
+html, body {margin: 0 !important;padding: 0 !important;}
+[v-cloak] {display: none;}
+    
+</style>
+
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-main>
+
+
+        <v-container
+            >
+                  <v-card
+                    class="mx-auto"
+                    max-width="1200px"
+                  >
+                    <v-toolbar
+                      color="cyan"
+                      dark
+                    >
+                      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+                      <v-toolbar-title>{{user.screen_name}}</v-toolbar-title>
+
+                      <v-spacer></v-spacer>
+
+                        <v-text-field 
+                            v-model="keyword"
+                        ></v-text-field>
+
+                      <v-btn icon @click="search">
+                        <v-icon>mdi-magnify</v-icon>
+                      </v-btn>
+                    </v-toolbar>
+
+                    <v-list three-line v-if="items.length>0">
+
+                      <template v-for="(item, index) in items">
+
+
+                        <v-subheader
+                          v-if="index==0"
+                          key="ttt"
+                        >
+                          {{""}}
+                        </v-subheader>
+
+                        <v-divider
+                          v-if="index%3==0"
+                          :key="index"
+                          inset="true"
+                        ></v-divider>
+
+                        <v-list-item
+                          :key="item.title"
+                          @click=""
+                        >
+                              <v-list-item-avatar  
+                                   @click="jump('user',item.mblog?.user?.id)"
+                                  >
+                                <v-img :src="item.mblog.user.profile_image_url"></v-img>
+                              </v-list-item-avatar>
+
+                              <v-list-item-content>
+
+                                        <v-list-item-title v-html="item.mblog.created_at"></v-list-item-title>
+                                        <v-list-item-subtitle 
+                                            v-html="item.mblog.text"
+                                            @click=`jump("detail",item.mblog?.idstr)`
+                                        ></v-list-item-subtitle>
+
+                              <v-row 
+                                  v-if="item.mblog.pic_num>0" 
+                                  align="left"
+                                  justify="left"
+                              >
+                               <v-col cols="12" sm="12" >
+                                  <v-card>
+                                    <v-container fluid>
+                                      <v-row>
+                                        <v-col
+                                          v-for="(pic,pi) in item.mblog.pics"
+                                          :key="pic.url"
+                                          class="d-flex child-flex"
+                                          cols="4"
+                                        >
+                                          <v-card flat tile class="d-flex">
+                                            <v-img
+                                              :src="pic.url"
+                                              :lazy-src="pic.url"
+                                              aspect-ratio="1"
+                                              class="grey lighten-2"
+                                            >
+                                              <template v-slot:placeholder>
+                                                <v-row
+                                                  class="fill-height ma-0"
+                                                  align="center"
+                                                  justify="center"
+                                                >
+                                                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                                </v-row>
+                                              </template>
+                                            </v-img>
+                                          </v-card>
+                                        </v-col>
+                                      </v-row>
+                                    </v-container>
+                                  </v-card>
+                                </v-col>
+                              </v-row>
+
+
+                              <v-row v-if="item.mblog.retweeted_status" >
+                                      <v-card >
+
+                                        <v-card-title>
+                                          <v-icon large left 
+                                              > mdi-share </v-icon>
+                                          <span 
+                                              class="title font-weight-light"
+                                              @click="jump('detail',item.mblog?.retweeted_status?.idstr,'#repost')"
+                                              >
+                                              @{{item.mblog?.retweeted_status?.user?.screen_name }}
+                                          </span>
+                                        </v-card-title>
+
+                                        <v-card-text  
+                                              v-html="item.mblog.retweeted_status?.text" 
+                                            
+                                            > </v-card-text>
+
+
+
+                              <v-row 
+                                  v-if="item.mblog?.retweeted_status?.pic_num>0" 
+                                  align="left"
+                                  justify="left"
+                              >
+                               <v-col cols="12" sm="12" >
+                                    <v-container fluid>
+                                      <v-row>
+                                        <v-col
+                                          v-for="(pic1,pi1) in item.mblog.retweeted_status.pics"
+                                          :key="pic1.url"
+                                          class="d-flex child-flex"
+                                          cols="4"
+                                        >
+                                            <v-img
+                                              :src="pic1.large.url"
+                                              :lazy-src="pic1.url"
+                                              aspect-ratio="1"
+                                              class="grey lighten-2"
+                                            >
+                                              <template v-slot:placeholder>
+                                                <v-row
+                                                  class="fill-height ma-0"
+                                                  align="center"
+                                                  justify="center"
+                                                >
+                                                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                                                </v-row>
+                                              </template>
+                                            </v-img>
+                                        </v-col>
+                                      </v-row>
+                                    </v-container>
+                                </v-col>
+                              </v-row>
+
+
+                                        <v-card-actions>
+                                          <v-list-item class="grow">
+                                            <v-list-item-avatar color="grey darken-3">
+                                              <v-img
+
+                                                @click="jump('user',item.mblog?.retweeted_status?.user?.id)"
+                                                class="elevation-6"
+                                                :src="item.mblog.retweeted_status?.user?.profile_image_url"
+                                              ></v-img>
+                                            </v-list-item-avatar>
+
+                                            <v-list-item-content>
+                                                <v-list-item-title>{{item.mblog.retweeted_status?.user?.screen_name}}</v-list-item-title>
+                                            </v-list-item-content>
+
+                                            <v-row
+                                              align="center"
+                                              justify="center"
+                                            >
+                                              <v-icon class="mr-1">mdi-message-text</v-icon>
+                                              <span class="subheading mr-2">
+                                                  {{item.mblog?.retweeted_status?.comments_count}}
+                                              </span>
+                                              <span class="mr-1">·</span>
+
+
+                                              <v-icon class="mr-1">mdi-heart</v-icon>
+                                              <span class="subheading mr-2">
+                                                  {{item.mblog?.retweeted_status?.attitudes_count}}
+                                              </span>
+
+                                              <span class="mr-1">·</span>
+                                              <v-icon class="mr-1">mdi-share-variant</v-icon>
+                                              <span class="subheading">
+                                              
+                                                  {{item.mblog?.retweeted_status?.reposts_count}}
+                                              </span>
+
+                                            </v-row>
+                                          </v-list-item>
+                                        </v-card-actions>
+                                      </v-card>
+
+                              </v-row>
+
+                           <p>
+                           .
+                           </p>
+
+
+                            <v-row
+                              align="center"
+                              justify="center"
+                            >
+
+                               <v-col cols="12" sm="12" >
+
+                                          <v-icon class="mr-1">mdi-message-text</v-icon>
+                                          <span class="subheading mr-2">
+                                              {{item.mblog?.comments_count}}
+                                          </span>
+                                          <span class="mr-1">·</span>
+
+
+                                          <v-icon class="mr-1">mdi-heart</v-icon>
+                                          <span class="subheading mr-2">
+                                              {{item.mblog?.attitudes_count}}
+                                          </span>
+
+                                          <span class="mr-1">·</span>
+                                          <v-icon class="mr-1">mdi-share-variant</v-icon>
+                                          <span class="subheading">
+                                              {{item.mblog?.reposts_count}}
+                                          </span>
+
+                              <v-col>
+                            </v-row>
+
+
+
+                              </v-list-item-content>
+                        </v-list-item>
+
+                      </template>
+                    </v-list>
+
+
+
+                  </v-card>
+
+
+                  <div class="text-center" v-if="total>0">
+                      <v-pagination
+                        v-model="page"
+                        :length="total"
+                        circle
+                      ></v-pagination>
+                    </div>
+
+
+
+        </v-container>
+
+      </v-main>
+    </v-app>
+  </div>  
+</body>
+</html>
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0-0/axios.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/vuetify/2.3.7/vuetify.min.js"></script>
+
+<script charset="utf-8">
+
+  var app = new Vue({
+      vuetify: new Vuetify(),
+      el: '#app',
+      data(){
+          return {
+            loading:false,
+            items1:[],
+            items: [],
+            search_result:[],
+            page:1,
+            total:0,
+            size:20,
+            keyword:"",
+            user:{
+                    "id": 0,
+                    "screen_name": "",
+                    "profile_image_url": "",
+                    "profile_url": "",
+                    "statuses_count": 0,
+                    "verified": true,
+                    "verified_type": 0,
+                    "verified_type_ext": 0,
+                    "verified_reason": "",
+                    "close_blue_v": false,
+                    "description": "",
+                    "gender": "m",
+                    "mbtype": 0,
+                    "urank": 0,
+                    "mbrank": 0,
+                    "follow_me": false,
+                    "following": false,
+                    "followers_count": 0,
+                    "follow_count": 0,
+                    "cover_image_phone": "",
+                    "avatar_hd": "",
+                    "like": false,
+                    "like_me": false,
+                    "badge": {
+                        "gongyi_level": 1,
+                        "bind_taobao": 1,
+                        "unread_pool": 1,
+                        "unread_pool_ext": 1,
+                        "user_name_certificate": 1
+                    }
+            },
+          }
+     },
+      watch:{
+        page(x){
+            console.log('turn page',x)
+            this.turn_page()
+        },
+      },
+      computed:{
+       // items:function(){
+       // }
+
+      },
+      methods:{
+        jump(p="user",id="0",d=""){
+            let o={
+               user:"https://m.weibo.cn/u/",
+               detail:"https://m.weibo.cn/detail/"
+            }
+            let u1=o[p]+id+d
+            console.log("goto",u1)
+            location.href=u1
+        },
+        init_page(d=[]){
+               this.page=1
+               this.items1=d
+               this.total=Math.ceil(d.length/this.size)
+               if (d.length>0) {
+                  let u=d?.[0]?.mblog?.user 
+                  if (u.id){
+                        this.user=u
+                  }
+               }
+        },
+        turn_page(){
+            let p1=this.size*(this.page-1)
+            let p2=p1+this.size
+            let d=[]
+
+            if (this.keyword == "") {
+                d=this.items1
+            }else{
+                d=this.search_result
+            }
+            this.items=d.slice(p1,p2)
+            this.total=Math.ceil(d.length/this.size)
+        },
+        init(){
+           if (localStorage.items) {
+              let d=JSON.parse(localStorage.items)
+              this.init_page(d)
+              this.turn_page()
+              return
+           }
+           axios.get("data/zym/blog.json").then(x=>{
+               console.log("get",x.data)
+               let d=x.data
+               this.init_page(d)
+               this.turn_page()
+               //localStorage.items=JSON.stringify(d)
+           })
+        },
+        search(){
+          let k=this.keyword
+          console.log('find',k)
+          if (k.length==0){
+             console.log("empty input")
+          }else{
+             let s=new RegExp(k) 
+             let d=this.items1.filter(x=>s.test(JSON.stringify(x)))
+             console.log('search result',d)
+             this.search_result=d
+          }
+          this.turn_page()
+        },
+      },
+
+      mounted(){
+          this.init()
+      },
+  })  
+
+
+
+</script>

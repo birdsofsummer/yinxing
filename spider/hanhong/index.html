@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+   *{
+       padding:0;
+       margin:0;
+   }
+   body{
+       width:100%
+   }
+</style>
+<body>
+<figure >
+    <div id="main" style="width: 1200px;height:500px;" ></div>
+</figure>
+    
+</body>
+</html>
+
+<script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/echarts.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/extension/dataTool.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.4.0-rc.1/extension/bmap.min.js"></script>
+<script src="https://cdn.bootcss.com/d3/5.12.0/d3.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.bootcss.com/lodash-fp/0.10.4/lodash-fp.min.js"></script>
+
+<script>
+
+    
+    //https://ttt-1252957949.cos.ap-hongkong.myqcloud.com/index.html
+    d={
+      "summery": {
+        "income": "765505.96",
+        "expenditure": "0.00",
+        "avgAmount": "188.362687",
+        "expenditureCount": "0",
+        "incomeCount": "4064",
+        "sumAmount": "765505.96"
+      },
+      "data": [
+        {
+          "projectTitle": "韩红爱心·百人援滇",
+          "payTime": "2020-02-03 19:55:58",
+          "donationName": "唐林",
+          "amount": 10,
+          "userRemark": "加油！"
+        },
+        {
+          "projectTitle": "韩红爱心·百人援滇",
+          "payTime": "2020-02-03 19:53:19",
+          "donationName": "郑江",
+          "amount": 100,
+          "userRemark": "有力量就要尽量去帮助需要的人"
+        },]
+    }
+
+
+    myChart = echarts.init(document.getElementById('main'));
+    get=(u="/")=> fetch(u).then(x=>x.json())
+    year=x=> moment(x).format('YYYY-MM-DD')
+    format_data=_.map(({payTime,amount})=>[year(payTime),amount])
+    calc=(d2=[])=>{
+        g=_.groupBy(x=>x[0])(format_data(d2))
+        let o=[]
+        for (let i in g){
+           s= _.sum(_.map(1,g[i]))
+           o.push([i,s])
+        }
+        return o
+    }
+
+
+    init2=async ()=>{
+            var cellSize = [30, 30];
+            d=await get("/cross/hanhong.json")
+            let data=calc(d.data)
+            let a=_.map(1,data)
+            let min=_.min(a)
+            let max=_.max(a)
+            var option = {
+                tooltip: {
+                    formatter: (params)=>params.value.join("<br/>")
+                },
+                legend: {
+                   // data: ['总额', '平均', '人次'],
+                   // bottom: 20
+                },
+                visualMap: {
+                    show: true,
+                    min,
+                    max,
+                    calculable: true,
+                    
+                },
+                 calendar: { 
+                 //   orient: 'vertical', 
+                    range: '2020',
+                    yearLabel: {
+                        show: false,
+                        textStyle: {
+                            fontSize: 30
+                        }
+                    },
+                    dayLabel: {
+                        margin: 20,
+                        firstDay: 1,
+                        nameMap: ['日', '一', '二', '三', '四', '五', '六']
+                    },
+                    monthLabel: {
+                        show: true
+                    },                     
+                    cellSize: cellSize,
+                 },
+
+//                 calendar:[{
+//                        left: 'center',
+//                        top: 'middle',
+//                      //  cellSize: [70, 70],
+//                        yearLabel: {show: false},
+//                        //orient: 'vertical',
+//                        dayLabel: {
+//                            firstDay: 1,
+//                            nameMap: 'cn'
+//                        },
+//                        monthLabel: {
+//                            show: false
+//                        },
+//                        range: '2020'
+//                 }],
+//
+ 
+                series: {
+                    type: 'heatmap',
+                    coordinateSystem: 'calendar',
+                    symbolSize: 1,
+                    label: {
+                        normal: {
+                            show: true,
+                            formatter: function (params) {
+                                return echarts.format.formatTime('dd', params.value[0]);
+                            },
+                            offset: [-cellSize[0] / 2 + 10, -cellSize[1] / 2 + 10],
+                            textStyle: {
+                                color: '#000',
+                                fontSize: 14
+                            }
+                        }
+                    },
+                    data:data,
+                }
+            };
+            myChart.setOption(option);
+    }
+
+init2()
+
+</script>
+
+

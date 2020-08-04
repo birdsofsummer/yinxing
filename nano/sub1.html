@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <p>nanomsg ws test:&nbsp;<span></span></p>
+    <input type='text'>
+    <button>send</button>
+<script>
+    mypub=()=>{
+          var ws = new WebSocket('ws://127.0.0.1:7790', [ 'pub.sp.nanomsg.org' ]);
+          ws.onopen = function open() { }//do something
+          ws.onerror = function error(err) { console.log(err); }
+          ws.onmessage = function message(e) {
+            //console.log(e.data)
+            document.querySelector('span').textContent = e.data
+          }
+    }
+mysub=()=>{
+      var sub = new WebSocket('ws://127.0.0.1:7791', [ 'sub.sp.nanomsg.org' ])
+      sub.onclose = function eh(){}
+      sub.onerror = function(){}
+      sub.onopen = function(){}
+
+      var input = document.querySelector('input');
+      input.addEventListener('keydown', function(e){
+        if (e.which === 13) {
+          return send();
+        }
+      }, false);
+
+      document
+        .querySelector('button')
+        .addEventListener('click', send, false);
+
+      setInterval(()=> sub.send(':)'+new Date()), 1000)
+      function send(e) {
+        sub.send(input.value); 
+        input.value = '';     
+      }
+}
+mypub()
+mysub()
+
+    </script>
+  </body>
+</html>

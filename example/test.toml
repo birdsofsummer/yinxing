@@ -1,0 +1,65 @@
+[env]
+
+[env.app]
+SecretId = "AKIDlQ2ZnrCd2iI1bx5F9i9dtSn374tsacZc"
+SecretKey = ""
+Region = "ap-hongkong"
+
+[env.code]
+CodeSources = ["ZipFile","Cos","Demo","Git","TempCos"]
+CodeSource = "ZipFile"
+DemoId =  ""
+
+[env.cos]
+Bucket = "ttt-1252957949"
+Prefix = "music"
+COS_HOST = "https://ttt-1252957949.cos.ap-hongkong.myqcloud.com"
+maxFileSize = ""
+CosBucketName = "ttt-1252957949"
+CosObjectName = ""
+CosBucketRegion = "ap-hongkong"
+TempCosObjectName = ""
+
+[env.git]
+GitUrl = "https://github.com/xxx/xxx"
+GitRepository = ""
+GitUserName = ""
+GitPassword = ""
+GitPasswordSecret = ""
+GitBranch = ""
+GitDirectory = ""
+GitCommitId = ""
+GitUserNameSecret = ""
+
+
+[env.db]
+mongo = "mongodb+srv://....retryWrites=true&w=majority"
+
+[ns]
+NS = [ { Namespace="test", Region="", Description = "test" },
+       { Namespace="release", Region="", Description="release" } ]
+
+[fn]
+
+[fn.file]
+TMP_DIR = "/tmp/dep/"
+ZipFile = "/tmp/dep/user.zip"  #...
+FN = ["user","token"]
+
+[fn.public_settings]
+FunctionName = 'hello'
+Description = "hello"
+Handler =  "index.main_handler"
+Region = "ap-shanghai"
+Namespace = "default"  
+Publish = 'TRUE'
+L5Enable = 'TRUE'
+Runtime =  "Nodejs8.9"
+Role =  "QCS_SCFExcuteRole"
+Timeout =  30
+MemorySize = 256  #128倍数
+
+[fn.private_settings]
+user = { ux=1, uy=2, }
+token = { tx=1, ty=2, }
+#...

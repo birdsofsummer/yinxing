@@ -1,0 +1,19 @@
+[package]
+name = "ocr"
+version = "0.1.0"
+authors = ["小舟从此逝 <kopor_oo@qq.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bytes = "0.5.4"
+futures = "0.3.4"
+surf = "1.0.3"
+async-std = "1.5.0"
+serde_derive = "1.0.104"
+headers = "0.3.2"
+base64 = "0.12.0"
+serde_json = "1.0.48"
+lazy_static = "1.4.0"
+serde = "1.0.104"

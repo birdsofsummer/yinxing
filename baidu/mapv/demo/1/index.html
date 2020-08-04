@@ -1,0 +1,234 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>MapVGL</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    #map_container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+    </style>
+
+</head>
+
+<body>
+    <div id="map_container"></div>
+</body>
+
+
+</html>
+
+    <script src="//api.map.baidu.com/api?v=1.0&type=webgl&ak=1XjLLEhZhQNUzd93EjU5nOGQ"></script>
+    <script src="//mapv.baidu.com/build/mapv.min.js"></script>
+    <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.28/dist/mapvgl.min.js"></script>
+    <script src="static/common.js"></script>
+
+
+    <script>
+
+        get=(u)=>fetch(u).then(x=>x.json())
+
+        format1=({geoCoord})=>({
+                geometry: {
+                    type: 'Point',
+                    coordinates: geoCoord
+                },
+                properties: {
+                    time: Math.random() * 100
+                },
+        })
+
+
+        format_city=(city="北京")=>{
+            let {lng,lat}=mapv.utilCityCenter.getCenterByCityName(city) 
+            return {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [
+                        lng - 2 + Math.random() * 4,
+                        lat - 2 + Math.random() * 4,
+                    ]
+                },
+                properties: {
+                    count: Math.random() * 40
+                }
+            }
+        }
+
+
+    /* global BMapGL */
+
+    /* global mapv */
+
+    /* global mapvgl */
+
+    /* global initMap */
+
+    /* global whiteStyle */
+
+    /* global purpleStyle */
+
+/*
+
+
+[
+    [{"geoCoord":[73.96,39.707]}],
+    [{"geoCoord":[75.059,38.445]}],
+    [{"geoCoord":[75.234,37.788]}]
+]
+
+[
+	{
+		"geometry": {
+			"type": "Point",
+			"coordinates": [
+				73.96,
+				39.707
+			]
+		},
+		"properties": {
+			"time": 59.51211556241917
+		}
+	}
+] 
+
+*/
+
+    var map = initMap({
+        tilt: 48.8,
+        heading: 0,
+        center: [105.348145,28.165926],
+        zoom: 5,
+        style: purpleStyle,
+        skyColors: [
+            // 地面颜色
+            'rgba(226, 237, 248, 0)',
+            // 天空颜色
+            'rgba(186, 211, 252, 1)'
+        ]
+
+    });
+
+    var view = new mapvgl.View({
+        /*
+            effects: [new mapvgl.BloomEffect({
+                blurSize: 3,
+            })],
+            */
+        map: map
+    });
+
+
+
+
+init1=async ()=>{
+    rs=await get('./data/chinalocation.json')
+    data=rs.map(x=>x.map(format1))
+    l=[
+        new mapvgl.PointLayer({
+                    blend: 'lighter',
+                    shape: 'circle',
+                    color: 'rgba(255, 77, 77, 0.8)', // 点图层1颜色
+                    data: data[0],
+                    size: 1
+        }),
+        new mapvgl.PointLayer({
+                    blend: 'lighter',
+                    shape: 'circle',
+                    color: 'rgba(255, 204, 0, 0.6)', // 点图层2颜色
+                    data: data[1],
+                    size: 1.5
+        }),
+        new mapvgl.PointLayer({
+                    blend: 'lighter',
+                    shape: 'circle',
+                    color: 'rgba(255, 255, 0, 0.6)', // 点图层3颜色
+                    data: data[2].slice(0,100),
+                    size: 20,
+        }),
+        new mapvgl.PointTripLayer({
+            blend: 'lighter',
+            shape: 'circle',
+            startTime: 0,
+            endTime: 100,
+            step: 0.1,
+            trailLength: 10,
+            color: 'rgba(255, 255, 153, 0.5)', // 点动画图层颜色
+            data: data[0],
+            size: 1.5
+        })
+    ]
+
+
+    l.map(x=>view.addLayer(x))
+}
+
+
+
+init2=()=>{
+    let citys=
+        [
+        "北京",
+        "天津",
+        "上海",
+        "重庆",
+        "石家庄",
+        "太原",
+        "呼和浩特",
+        "哈尔滨",
+        "长春",
+        "沈阳",
+        "济南",
+        "南京",
+        "合肥",
+        "杭州",
+        "南昌",
+        "福州",
+        "郑州",
+        "武汉",
+        "长沙",
+        "广州",
+        "南宁",
+        "西安",
+        "银川",
+        "兰州",
+        "西宁",
+        "乌鲁木齐",
+        "成都",
+        "贵阳",
+        "昆明",
+        "拉萨",
+        "海口"
+    ]
+    let d=citys.map(format_city)
+    let l= new mapvgl.PointLayer({
+        blend: 'lighter',
+        size: x=>x.properties.count,
+        color: 'rgba(89, 0, 179,0.6)',
+        data:d,
+    })
+    //l.setData(d)
+    view.addLayer(l)
+
+}
+
+init1()
+init2()
+
+</script>
+
+<script src="1.js"></script>

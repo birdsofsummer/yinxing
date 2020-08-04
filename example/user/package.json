@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "yinxing": "^0.1.19"
+  },
+  "scripts": {
+        "upload":"node upload.js",
+        "env":"node init.js",
+        "zip":"../deploy.sh",
+        "d0":"node dep.js 0",
+        "d1":"node dep.js 1",
+        "d2":"node dep.js 2",
+        "init":"node dep.js 4",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "export NODE_ENV='development' && node app.js",
+        "build": "export NODE_ENV='production' && node app.js"
+   }
+}

@@ -1,0 +1,11 @@
+{
+  "expiredTime": 1578199196,
+  "expiration": "2020-01-05T04:39:56Z",
+  "credentials": {
+    "sessionToken": "c2acU51IbJAqI3w51KPEI553nvyH8pXVa138c49800f8cab5d87c1ada1fe33a27A7nawKIsdouU24cbQYbG21cZ00MaPtzSpmV3LH-EO2rUpE84iOoAaE0ilqfQl6vwmloXzkHXsH6Ebo1_go3IOjVPZo174vhDsGRO08UKSwU",
+    "tmpSecretId": "AKIDVPvcx8Z6E_tcD7CcWmfvSblpGgNF24pssPJ8tkxTZFNeB9ENVG9tIo4i70mqiekJ",
+    "tmpSecretKey": "aR8G7fWg18W5i7QHIwR9Lkcoz3eS0KlaUvWTX/kssCA="
+  },
+  "requestId": "7c71aace-959b-4722-845e-d9c849e58dc9",
+  "startTime": 1578197396
+}

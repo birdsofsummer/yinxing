@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+ <a href="qcloud_sign.html">qcloud sign</a>
+ <form action="" method="post">
+        <h2>source + x-date</h2>
+        <fieldset>
+           <textarea name="" id="sign" rows="8" cols="200">  </textarea>   
+           <br/>
+           <button type="button" onclick="gen()">生成</button>
+        </fieldset>
+ </form>
+
+
+ <form action="" method="post">
+     <h2>source + x-date</h2>
+     <fieldset>
+        <input type="text" name="SERVER" id="SERVER" value="https://service-hc5rz9qa-1252957949.gz.apigw.tencentcs.com/release/sec" placeholder="SERVER" />
+        <br/>
+        <input type="text" name="SECRETID" id="SECRETID" value="AKIDEOJ44ea4y6afWpIrIzdcuYV52T81dHvqVKsD"  placeholder="SECRETID" />
+        <br/>
+        <input type="text" name="SECRETKEY" id="SECRETKEY" value="k66d99m4gs9f05x6vqgp2yrkrvpdemhhpnhj68FX"  placeholder="SECRETKEY" />
+        <br/>
+        <input type="text" name="SOURCE" id="SOURCE" value="ccc"  placeholder="SOURCE" />
+        <br/>
+        <input type="text" name="time" id="time" value='Sat, 15 Feb 2020 12:33:40 GMT' placeholder="gmt"/>  <button type="button" onclick="reset_time()">now</button>
+        <br/>
+        <textarea name="" id="sign1" rows="8" cols="200">  </textarea>   
+        <button type="button" onclick="gen1()">生成</button>
+        <button type="button" onclick="test()">发请求</button>
+     </fieldset>
+ </form>
+
+
+ <section id="app">
+ <form action="" method="post">
+    <h2>多字段</h2>
+    <ul>
+        <li v-for="h in headers1">{{h}}</li>
+    </ul>
+    <fieldset>
+
+        <button type="button" @click="reset()">reset</button>
+        <br />
+        <input v-model="config.server" placeholder="SERVER" >
+        <input v-model="config.secretid" placeholder="SECRETID" >
+        <input v-model="config.secretkey" placeholder="SECRETKEY" >
+        <br />
+        <input v-model='headers["Source"]' placeholder="Source" >
+        <br />
+        <input v-model='headers["X-Token"]' placeholder="X-Token">
+        <br />
+        <input v-model='headers["X-ZZZ"]' placeholder="X-ZZZ">
+        <br />
+        <input v-model='headers["X-Date"]' placeholder="X-Date"> 
+        <button type="button" @click="now()">now</button>
+        <button type="button" @click="stop()">stop</button>
+        <button type="button" @click="start()">start</button>
+        <br />
+        <h3>headers</h3>
+        <p>{{headers}}</p>
+        <h3>signature</h3>
+        <p>{{sig}}</p>
+        <br />
+        <hr />
+        <p>{{res}}</p>
+        <button type="button" @click="send()">send</button>
+    </fieldset>
+</form>
+    
+ </section>
+
+
+
+</body>
+
+<script src="https://cdn.bootcss.com/superagent/4.1.0-beta.1/superagent.min.js"></script>
+<script src="https://cdn.bootcss.com/crypto-js/3.1.9/crypto-js.min.js"></script>
+<!--script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/hmac-sha1.min.js"></script-->
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/ramda/0.27.0/ramda.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+
+<script src="qcloud_apigw_sign.js"></script>
+
+
+</html>

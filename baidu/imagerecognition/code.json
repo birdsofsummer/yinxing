@@ -1,0 +1,212 @@
+{
+  "1": {
+    "error_code": 1,
+    "error_msg": "Unknown error",
+    "desc": "服务器内部错误，请再次请求， 如果持续出现此类错误，请通过QQ群（659268104）或工单联系技术支持团队。"
+  },
+  "2": {
+    "error_code": 2,
+    "error_msg": "Service temporarily unavailable",
+    "desc": "服务暂不可用，请再次请求， 如果持续出现此类错误，请通过QQ群（659268104）或工单联系技术支持团队。"
+  },
+  "3": {
+    "error_code": 3,
+    "error_msg": "Unsupported openapi method",
+    "desc": "调用的API不存在，请检查后重新尝试"
+  },
+  "4": {
+    "error_code": 4,
+    "error_msg": "Open api request limit reached",
+    "desc": "集群超限额"
+  },
+  "6": {
+    "error_code": 6,
+    "error_msg": "No permission to access data",
+    "desc": "无权限访问该用户数据"
+  },
+  "13": {
+    "error_code": 13,
+    "error_msg": "Get service token failed",
+    "desc": "获取token失败"
+  },
+  "14": {
+    "error_code": 14,
+    "error_msg": "IAM Certification failed",
+    "desc": "IAM鉴权失败"
+  },
+  "15": {
+    "error_code": 15,
+    "error_msg": "app not exsits or create failed",
+    "desc": "应用不存在或者创建失败"
+  },
+  "17": {
+    "error_code": 17,
+    "error_msg": "Open api daily request limit reached",
+    "desc": "每天请求量超限额，已上线计费的接口，请直接在控制台开通计费，调用量不受限制，按调用量阶梯计费；未上线计费的接口，请通过QQ群（659268104）联系群管手动提额"
+  },
+  "18": {
+    "error_code": 18,
+    "error_msg": "Open api qps request limit reached",
+    "desc": "QPS超限额，已上线计费的接口，请直接在控制台开通计费，调用量不受限制，按调用量阶梯计费；未上线计费的接口，请通过QQ群（659268104）联系群管手动提额"
+  },
+  "19": {
+    "error_code": 19,
+    "error_msg": "Open api total request limit reached",
+    "desc": "请求总量超限额，已上线计费的接口，请直接在控制台开通计费，调用量不受限制，按调用量阶梯计费；未上线计费的接口，请通过QQ群（659268104）联系群管手动提额"
+  },
+  "100": {
+    "error_code": 100,
+    "error_msg": "Invalid parameter",
+    "desc": "无效的access_token参数，请检查后重新尝试"
+  },
+  "110": {
+    "error_code": 110,
+    "error_msg": "Access token invalid or no longer valid",
+    "desc": "access_token无效"
+  },
+  "111": {
+    "error_code": 111,
+    "error_msg": "Access token expired",
+    "desc": "access token过期"
+  },
+  "216100": {
+    "error_code": 216100,
+    "error_msg": "invalid param",
+    "desc": "请求中包含非法参数，请检查后重新尝试"
+  },
+  "216101": {
+    "error_code": 216101,
+    "error_msg": "not enough param",
+    "desc": "缺少必须的参数，请检查参数是否有遗漏"
+  },
+  "216102": {
+    "error_code": 216102,
+    "error_msg": "service not support",
+    "desc": "请求了不支持的服务，请检查调用的url"
+  },
+  "216103": {
+    "error_code": 216103,
+    "error_msg": "param too long",
+    "desc": "请求中某些参数过长，请检查后重新尝试"
+  },
+  "216110": {
+    "error_code": 216110,
+    "error_msg": "appid not exist",
+    "desc": "appid不存在，请重新核对信息是否为后台应用列表中的appid"
+  },
+  "216200": {
+    "error_code": 216200,
+    "error_msg": "empty image",
+    "desc": "图片为空，请检查后重新尝试"
+  },
+  "216201": {
+    "error_code": 216201,
+    "error_msg": "image format error",
+    "desc": "上传的图片格式错误，现阶段我们支持的图片格式为：PNG、JPG、JPEG、BMP，请进行转码或更换图片"
+  },
+  "216202": {
+    "error_code": 216202,
+    "error_msg": "image size error",
+    "desc": "上传的图片大小错误，现阶段我们支持的图片大小为：base64编码后小于4M，分辨率不高于4096*4096，请重新上传图片"
+  },
+  "216203": {
+    "error_code": 216203,
+    "error_msg": "image size error",
+    "desc": "上传的图片base64编码有误，请校验base64编码方式，并重新上传图片"
+  },
+  "216630": {
+    "error_code": 216630,
+    "error_msg": "recognize error",
+    "desc": "识别错误，请再次请求，如果持续出现此类错误，请通过QQ群（659268104）或工单联系技术支持团队。"
+  },
+  "216631": {
+    "error_code": 216631,
+    "error_msg": "recognize bank card error",
+    "desc": "识别银行卡错误，出现此问题的原因一般为：您上传的图片非银行卡正面，上传了异形卡的图片或上传的银行卡正品图片不完整"
+  },
+  "216633": {
+    "error_code": 216633,
+    "error_msg": "recognize idcard error",
+    "desc": "识别身份证错误，出现此问题的原因一般为：您上传了非身份证图片或您上传的身份证图片不完整"
+  },
+  "216634": {
+    "error_code": 216634,
+    "error_msg": "detect error",
+    "desc": "检测错误，请再次请求，如果持续出现此类错误，请通过QQ群（659268104）或工单联系技术支持团队。"
+  },
+  "282000": {
+    "error_code": 282000,
+    "error_msg": "internal error",
+    "desc": "服务器内部错误，请再次请求， 如果持续出现此类错误，请通过QQ群（659268104）或工单联系技术支持团队。"
+  },
+  "282003": {
+    "error_code": 282003,
+    "error_msg": "missing parameters: {参数名}",
+    "desc": "请求参数缺失"
+  },
+  "282005": {
+    "error_code": 282005,
+    "error_msg": "batch  processing error",
+    "desc": "处理批量任务时发生部分或全部错误，请根据具体错误码排查"
+  },
+  "282006": {
+    "error_code": 282006,
+    "error_msg": "batch task  limit reached",
+    "desc": "批量任务处理数量超出限制，请将任务数量减少到10或10以下"
+  },
+  "282100": {
+    "error_code": 282100,
+    "error_msg": "image transerror_code error",
+    "desc": "图片压缩转码错误"
+  },
+  "282101": {
+    "error_code": 282101,
+    "error_msg": "image split limit reached",
+    "desc": "长图片切分数量超限"
+  },
+  "282102": {
+    "error_code": 282102,
+    "error_msg": "target detect error",
+    "desc": "未检测到图片中识别目标"
+  },
+  "282103": {
+    "error_code": 282103,
+    "error_msg": "target recognize error",
+    "desc": "图片目标识别错误"
+  },
+  "282114": {
+    "error_code": 282114,
+    "error_msg": "url size error",
+    "desc": "URL长度超过1024字节或为0"
+  },
+  "282808": {
+    "error_code": 282808,
+    "error_msg": "request id: xxxxx not exist",
+    "desc": "request id xxxxx 不存在"
+  },
+  "282809": {
+    "error_code": 282809,
+    "error_msg": "result type error",
+    "desc": "返回结果请求错误（不属于excel或json）"
+  },
+  "282810": {
+    "error_code": 282810,
+    "error_msg": "image recognize error",
+    "desc": "图像识别错误"
+  },
+  "283300": {
+    "error_code": 283300,
+    "error_msg": "Invalid argument",
+    "desc": "入参格式有误，可检查下图片编码、代码格式是否有误"
+  },
+  "336000": {
+    "error_code": 336000,
+    "error_msg": "Internal error",
+    "desc": "服务器内部错误，请再次请求， 如果持续出现此类错误，请通过QQ群（659268104）或工单联系技术支持团队"
+  },
+  "336001": {
+    "error_code": 336001,
+    "error_msg": "Invalid Argument",
+    "desc": "入参格式有误，比如缺少必要参数、图片base64编码错误等等，可检查下图片编码、代码格式是否有误。有疑问请通过QQ群（659268104）或工单联系技术支持团队"
+  }
+}

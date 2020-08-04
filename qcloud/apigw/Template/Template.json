@@ -1,0 +1,6 @@
+{
+  "components": {
+    "dashboard": "/root/.serverless/components/registry/npm/@serverless/tencent-website@1.2.19/node_modules/@serverless/tencent-website",
+    "api": "/root/.serverless/components/registry/npm/@serverless/tencent-express@2.2.4/node_modules/@serverless/tencent-express"
+  }
+}

@@ -1,0 +1,19 @@
+<% if (names.length) { %>
+    <% names.forEach(function (name) { %>
+      <%= name %>
+    <% }) %>
+<% } %>
+
+
+<% function f(name) { %>
+* <%= name %>
+<% } %>
+<% names.map(f) %>
+<%= names %>
+<%= names.join("|"); %>
+
+
+
+<% if (data) { %>
+<%- data.ddd %>
+<% } %>

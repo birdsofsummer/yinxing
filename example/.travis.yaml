@@ -1,0 +1,14 @@
+#https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+language: node_js
+node_js:
+  - "13"
+env:
+    - VERSION=default
+before_script:
+  - npm install -g yinxing@latest
+install:
+  - pwd
+  - node init.js
+  - ./deploy_development.sh
+    #- ./deploy_test.sh
+    #- ./deploy_production.sh

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ <button onclick='notifyMe("zzz")'>Notify me!</button>   
+</body>
+<script>
+
+say=x=>y=>console.log(x,y)
+log=console.log
+
+chan=(onmessage)=>{
+    channel = new MessageChannel();
+    channel.port1.onmessage = onmessage
+    return [channel.port2]
+}
+
+reg_sw=async()=>{
+    sw=await navigator.serviceWorker.register('/sw.js')
+    sw.update();
+    console.log(sw)
+    reg=await navigator.serviceWorker.ready
+    
+    navigator.serviceWorker.onmessage=say('sw--->')
+    //navigator.serviceWorker.addEventListener('message',say('sw---->'))    
+    s=reg.active
+    //s.onmessage=say('s--->')
+    send=(d="ccc")=>s.postMessage(d, chan(say("ch1---<<<")));
+    test_send=()=>{
+        i=0
+        setInterval(()=>send(i++),2000)
+    }
+
+//    z=sw.active
+//    z.onstatechange=log
+//    z.onerror=log
+//    z.addEventListener('statechange', console.log)
+
+//    c=navigator.serviceWorker.controller
+//    console.log(c)
+//    navigator.serviceWorker.oncontrollerchange=say('change')
+
+    g=await sw.pushManager.permissionState()
+    sub=await sw.pushManager.getSubscription()
+    console.log(g,sub)
+    //await sw.pushManager.subscribe()
+}
+
+
+init=async()=>{
+     options={ }
+     pub=await serviceWorkerRegistration.pushManager.subscribe(options)
+}
+say1=(d="")=>new Notification(d)
+notifyMe=async (d="ttt")=> {
+      if (Notification.permission === "granted") {
+          say1(d)
+      }
+      else if (Notification.permission !== "denied") {
+        let r=await Notification.requestPermission()
+        console.log(r)
+        if (r=== "granted") {
+              say1(d)
+          }
+      }
+}
+
+reg_sw()
+window.onmessage=say('postmsg:')
+
+
+</script>
+</html>

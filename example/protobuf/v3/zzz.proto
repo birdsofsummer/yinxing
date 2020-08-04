@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package zzz;
+option optimize_for = LITE_RUNTIME;
+
+message Account{
+    string accountName = 1; 
+    string pwd = 2; 
+}
+
+message AccountList{
+    int32 index = 1;
+    repeated Account list = 2;
+}
+
+

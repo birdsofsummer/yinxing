@@ -1,0 +1,258 @@
+<html>
+<head>
+    <meta charset='UTF-8'>
+</head>
+<body>
+    <main id="app">
+        <section>
+             <button type="button" @click="init_sse()">sse</button>
+             <button type="button" @click="close_sse()">close</button>
+             <button type="button" @click="clean_sse()">clean</button>
+             <ol>
+                  <li v-for="(item,i) in sse"  v-bind:key="sse+i" >{{item}}</li>                  
+             </ol>
+
+        </section>
+        <hr>
+        <section>
+             <input type="text" v-model="send_data.username" placeholder="username" ></input>
+             <br>
+             <input type="text" v-model="send_data.to" placeholder="to"></input>
+             <br>
+             <input type="text" v-model="send_data.content" placeholder="content" @focus="writting" @blur="stop_write"></input>
+             <br>
+
+
+
+             <button @click="send_new_msg()">new</button>
+             <button @click="send_msg()">发送</button>
+             <button @click="chat_msg()">chat</button>
+             <button @click="clean()">clean</button>
+
+
+             <hr>
+             <i>{{ numUsers }}</i>
+             <ol>
+             <li v-for="(item,i) in set2map(user_list)"  v-bind:key="'user'+i" >{{item}}</li>                  
+             </ol>
+
+             <hr>
+
+             <div>
+                  <h3> message：</h3>
+                  <ul>
+                      <li v-for="(item,i) in msg"  v-bind:key="i" >{{item}}</li>                  
+                  </ul>
+             </div>
+        </section>
+        <hr>
+        <section>
+
+        </section>
+
+
+      </main>
+</body>
+
+
+<script src="https://cdn.bootcss.com/socket.io/2.3.0/socket.io.dev.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.bootcss.com/ramda/0.26.1/ramda.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script>
+
+  const now=moment.now
+  const log=console.log
+  const sleep=(n=1)=>new Promise((a,b)=>setTimeout(a,n*1000))
+  const ws_url=()=>location.protocol.replace("http","ws")+"//"+location.host 
+  const set2map=({ids,data})=>[...ids].map(x=>data[x])
+  const msg_types=[
+        'send',
+        'chat message',
+        'new message',
+        "typing",
+        "stop typing",
+        'user joined',
+        'add user',
+        'login',
+    ]
+    const app = new Vue({
+       el: '#app',
+           data(){
+                 return {
+                      msg_types,
+                      socket:{},
+                      token:now(),
+                      send_data:{
+                         username:"cc"+now(),
+                         to:"cc",
+                         content:"cc",
+                         connected : false,
+                         typing : false,
+                         lastTypingTime:moment.now(),
+                         msg_type:0,
+                         time:now(),
+                      },
+                     msg:[],
+                     sse:[],
+                     numUsers:1,
+                     user_list:{ids:new Set(),data:{}},
+               }
+             },
+            computed:{
+                 send_str(){ return JSON.stringify(this.send_data) },
+            },
+           methods:{
+               set2map,
+               write_sse(x){
+                    this.sse.push(x)
+               },
+               clean_sse(){
+                   this.sse=[]
+               },
+               init_sse(){
+                   this.clean_sse()
+                   let token=this.token
+                    sse_server='/stream?token='+token
+                    var source = new EventSource(sse_server)
+                    this.write_sse("token:"+token)
+                    source.onopen =()=> this.write_sse('open')
+                    source.onmessage = (e)=>{
+                        let {data,orgin,type,timeStamp}=e
+                        let d={data,orgin,type,timeStamp}
+                        log(e)
+                        log(JSON.parse(data))
+                        html=`${JSON.stringify(d)}`
+                        this.write_sse(html)
+                    }
+                    source.onerror=()=> this.write_sse('sse error')
+                    this.sse_source=source
+               },
+               close_sse(){
+                    this.sse_source.close()
+                    this.write_sse('sse close')
+               },
+               del_user(username){
+                 //this.user_list.ids.delete(username)
+                   this.user_list.data[username]={username,status:"offline",typing:false}
+               },
+               add_user(username){
+                          this.user_list.ids.add(username)
+                          this.user_list.data[username]={username,status:"online",typing:false}
+               },
+               set_typing(username,is_typing=true){
+                     if (! this.user_list.ids.has[username]){
+                         this.add_user(username)
+                     } 
+                     this.user_list.data[username].typing = is_typing
+               },
+               init_chat(){
+                     var socket = io(ws_url());
+                     this.send_data.connected=true
+                     socket.on('getMsg', data => {
+                          log(data);
+                          this.write(data)
+                     })
+                     //1->n+1 
+                     socket.on('chat message', data => {
+                          log(data);
+                          this.write(data)
+                     })
+                     //1->n 
+                     socket.on('new message', (data) => {
+                         console.log(data);
+                         this.write(data)
+                      });
+                      socket.on('user joined', (data) => {
+                          log(data)
+                          let { username,numUsers}=data
+                          this.numUsers=numUsers
+                          this.add_user(username)
+                      });                        
+                      socket.on('user left', (data) => {
+                            log(data)
+                      }); 
+                      socket.on('typing', (data) => {
+                            let username  =data.username
+                            log('typing',data)
+                            this.set_typing(username,true)
+                      });                        
+                      socket.on('stop typing', (data) => {
+                            log(data);
+                            log('stop typing',data)
+                            let username=data.username
+                            this.set_typing(username,false)
+                      });
+                      socket.on('disconnect', (d) => {
+                           log(d)
+                           log('you have been disconnected');
+                           username=this.send_data.username
+                           this.del_user(username)
+                      });
+                      socket.on('reconnect', () => {
+                            log('you have been reconnected');
+                            let username=this.send_data.username
+                            socket.emit('add user', username);
+                      });
+                      socket.on('reconnect_error', (d) => {
+                            log(d)
+                            log('attempt to reconnect has failed');
+                      });                        
+                     socket.on('login', (data) => {
+                           log('login',data)
+                           this.numUsers = data.numUsers
+                           this.send_data.connected = true;
+                           let username=this.send_data.username
+                           this.add_user(username)
+                     })
+                     this.socket=socket
+                     this.add_me()
+                },
+                writting(){
+                     this.send_data.typing=true
+                     this.send_data.lastTypingTime=moment.now()
+                     this.socket.emit('typing');
+                     let username=this.send_data.username
+                     this.set_typing(username,true)
+                },
+                stop_write(){
+                      let username=this.send_data.username
+                      this.set_typing(username,false)
+                      this.send_data.typing=false
+                      this.send_data.lastTypingTime=moment.now()
+                      this.socket.emit('stop typing');
+                },
+                send_msg(){
+                    this.send_data.time=moment.now()
+                    this.socket.emit('send', this.send_str)
+                },
+                send_new_msg(){
+                    this.socket.emit('new message', this.send_str);
+                },
+                add_me(){
+                     this.socket.emit('add user', this.send_data.username);
+                },
+                chat_msg(){
+                    this.send_data.time=moment.now()
+                    this.socket.emit('chat message',this.send_str)
+                },
+                write(x){
+                    this.msg.push(x)
+                },
+                clean(){
+                    this.msg=[]
+                },
+            },
+             mounted(){
+                 this.init_chat()
+             },                 
+         })
+
+
+
+
+     </script>
+</html>
+
+

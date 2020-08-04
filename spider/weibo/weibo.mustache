@@ -1,0 +1,36 @@
+---------------------------------------------------------------------------
+{{#data}}
+{{#mblog}}
+{{user.screen_name}} {{created_at}} 来自{{source}}
+https://m.weibo.cn/detail/{{idstr}}
+
+{{{text}}}
+
+{{#pics}}
+{{{large.url}}}
+{{/pics}}
+{{#retweeted_status}}
+
+https://m.weibo.cn/detail/{{idstr}}
+@{{user.screen_name}} 
+{{{text}}}
+{{#pics}}
+{{{large.url}}}
+{{/pics}}
+转发{{retweeted_status.reposts_count}} 评论 {{retweeted_status.comments_count}} 赞{{retweeted_status.attitudes_count}}
+
+{{/retweeted_status}}
+转发:{{reposts_count}} 评论:{{comments_count}} 赞:{{attitudes_count}} {{!number_display_strategy.display_text}}
+{{/mblog}}
+---------------------------------------------------------------------------
+{{/data}}
+
+{{^data}}
+No data :
+{{/data}}
+
+
+{{#photo}}
+{{{.}}}
+{{/photo}}
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>words</title>
+    <!--script src="https://cdn.bootcss.com/echarts/4.7.0/echarts.min.js"></script-->
+    <script src="https://gallerybox.echartsjs.com/dep/echarts/latest/echarts.min.js"></script>
+    <script src="https://oisanjavax.github.io/echarts-wordcloud/dist/echarts-wordcloud.min.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 1000px; height:1000px"></div>
+</body>
+</html>
+
+
+
+
+<script>
+
+
+
+    now=()=>Math.floor(new Date().getTime()/1000)
+    qs=(...a)=>{
+        let s=new URLSearchParams()
+        for (let i of a){
+            for (let j in i){
+                s.append(j,i[j]) //不覆盖
+               // s.set(j,i[j])    //覆盖
+            }
+        }
+        return s
+    }
+
+    qs1=(u="",...a)=>{
+       let u1=new URL(u.toString())
+        for (d of a){
+            for (k in d){
+                u1.searchParams.append(k,d[k])
+            }
+        }
+        return u1
+    }
+
+    search=(x="樊")=>{
+       let u="https://m.weibo.cn/search"
+       let q={
+                'profile_containerid' : '231802_5893161316',
+                'profile_uid' : '1222425514',
+                'disable_sug' : '1',
+                'diabled_eject_animation' : '1',
+                'disable_hot' : '0',
+                'trans_bg' : '0',
+                'disable_history' : '1',
+                'hint' : '搜她的微博',
+                'luicode' : '10000011',
+                'lfid' : '2304131222425514_-_WEIBO_SECOND_PROFILE_WEIBO',
+                'container_ext' : 'profile_uid:1222425514|hint=搜她的微博|nettype:|gps_timestamp:'+now(),
+                'containerid' : '100103type=401&t=10&q='+x, 
+       }
+       let u1=qs1(u,q)
+       window.open(u1)
+       //window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+    }
+
+    get_data=async()=>{
+            r=await fetch("data/mblog-words.json").then(x=>x.json())
+            r1=Object.entries(r).map(([name,value])=>({name,value}))
+            return r1
+    }
+
+
+
+
+
+
+    let option = {
+        title: {
+            text: 'weibo',
+            link: 'https://m.weibo.cn/p/index?containerid=2304131222425514_-_WEIBO_SECOND_PROFILE_WEIBO&luicode=10000011&lfid=2302831222425514',
+            x: 'center',
+            textStyle: {
+                fontSize: 23
+            }
+        },
+        backgroundColor: '#F7F7F7',
+        tooltip: {
+            show: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {
+                    iconStyle: {
+                        normal: {
+                            color: '#FFFFFF'
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+            name: 'words',
+            type: 'wordCloud',
+            //size: ['9%', '99%'],
+            sizeRange: [16, 90],
+            //textRotation: [0, 45, 90, -45],
+            rotationRange: [-45, 90],
+            //shape: 'circle',
+            textPadding: 0,
+            autoSize: {
+                enable: true,
+                minSize: 6
+            },
+            textStyle: {
+                normal: {
+                    color: function() {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: []
+        }]
+    };
+
+    init =async ()=>{
+            var myChart = echarts.init(document.getElementById('main'));
+            let r1=await get_data();
+            option.series[0].data =r1.slice(0,500);
+            myChart.setOption(option);
+            myChart.on('click', function (params) {
+                    console.log(params.name)
+                    search(params.name)
+            });
+            window.onresize = function() {
+                myChart.resize();
+            }
+    }
+
+    init()
+
+</script>
+

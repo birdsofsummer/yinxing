@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>qcloud sign</title>
+</head>
+
+
+<body>
+ <section id="app">
+ <h2>由于跨域问题，签名只做演示</h2>
+ <form action="" method="post">
+    <fieldset>
+
+        <button type="button" @click="reset()">reset</button>
+        <br />
+
+        <input v-model="config.SecretId" placeholder="SecretId" >
+        <input v-model="config.SecretKey" placeholder="SecretKey" >
+        <input v-model='config.Region' placeholder="Region">
+        <input v-model='config.module' placeholder="module">
+        <br />
+        <input v-model='config.host' placeholder="host">
+        <input disabled v-model='config.path' placeholder="path">
+        <input disabled v-model='config.url' placeholder="url">
+        <br />
+        <input disabled v-model='config.SignatureMethod' placeholder="SignatureMethod">
+        <input disabled v-model='config.version' placeholder="version">
+        <input disabled v-model='config.method' placeholder="method">
+        <br />
+        <input v-model='config.Nonce' placeholder="Nonce">
+        <input v-model='config.Timestamp' placeholder="Timestamp">
+
+        <button type="button" @click="now()">now</button>
+        <button type="button" @click="stop()">stop</button>
+        <button type="button" @click="start()">start</button>
+        <br />
+        <button type="button" @click="send()">send</button>
+
+        <h3>config</h3>
+        <p>{{config}}</p>
+
+        <h3>req</h3>
+        <p>{{req}}</p>
+
+        <h3>url</h3>
+        <p>{{url}}</p>
+
+        <h3>query</h3>
+        <p>{{sig}}</p>
+        <br />
+        <p>{{res}}</p>
+    </fieldset>
+</form>
+    
+ </section>
+
+</body>
+
+<script src="https://cdn.bootcss.com/superagent/4.1.0-beta.1/superagent.min.js"></script>
+<script src="https://cdn.bootcss.com/crypto-js/3.1.9/crypto-js.min.js"></script>
+<!--script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/hmac-sha1.min.js"></script-->
+<script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdn.bootcss.com/ramda/0.27.0/ramda.min.js"></script>
+
+<script src="qcloud_sign.js"></script>
+
+
+</html>

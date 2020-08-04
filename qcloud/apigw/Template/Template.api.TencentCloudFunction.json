@@ -1,0 +1,11 @@
+{
+  "deployed": {
+    "Name": "ncov-api",
+    "Runtime": "Nodejs8.9",
+    "Handler": "serverless-handler.handler",
+    "MemorySize": 128,
+    "Timeout": 3,
+    "Region": "ap-guangzhou",
+    "Description": "This is a template function"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "Name": "ttt-1252957949",
+  "Prefix": "music",
+  "Marker": "",
+  "MaxKeys": "1000",
+  "IsTruncated": "false",
+  "Contents": [
+    {
+      "Key": "music/",
+      "LastModified": "2019-11-17T10:57:10.000Z",
+      "ETag": "\"d41d8cd98f00b204e9800998ecf8427e\"",
+      "Size": "0",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/21/20160309112356_yQJkT.jpeg",
+      "LastModified": "2019-11-21T09:40:29.000Z",
+      "ETag": "\"960f2b2404ef5296a1ce880454f94231-1\"",
+      "Size": "625636",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/21/20160405134356_cYent.jpeg",
+      "LastModified": "2019-11-21T09:40:28.000Z",
+      "ETag": "\"e27836ad4bc1e3a3fd977a274ce55b8d-1\"",
+      "Size": "244722",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/21/20161012205239_syEdU.jpeg",
+      "LastModified": "2019-11-21T09:33:46.000Z",
+      "ETag": "\"d4eb6a69d2b84226212489df837bab47-1\"",
+      "Size": "285821",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/21/20161012205343_fGHJu.jpeg",
+      "LastModified": "2019-11-21T09:35:14.000Z",
+      "ETag": "\"17253d2dcc83e14ca14a011b41e99ddc-1\"",
+      "Size": "675475",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/21/20161012205421_ecNLJ.jpeg",
+      "LastModified": "2019-11-21T09:35:14.000Z",
+      "ETag": "\"fb8aac9965677a82bc13a3f401190b16-1\"",
+      "Size": "742899",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/21/20161012205432_RNrSZ.jpeg",
+      "LastModified": "2019-11-21T09:16:38.000Z",
+      "ETag": "\"332f79bc708708a5ffd4849048b04fcf-1\"",
+      "Size": "659722",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/21/20161220135636_YmMNV.jpeg",
+      "LastModified": "2019-11-21T08:24:11.000Z",
+      "ETag": "\"412d2fd2c4f23148b07da6b7e5209e2c-1\"",
+      "Size": "288218",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/21/20170820211252_er2PN.jpeg",
+      "LastModified": "2019-11-21T03:56:05.000Z",
+      "ETag": "\"38a74370f3381c4331ed68d811afa0f3-1\"",
+      "Size": "134440",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    },
+    {
+      "Key": "music/img/2019/11/22/20161012205343_fGHJu.jpeg",
+      "LastModified": "2019-11-22T03:13:25.000Z",
+      "ETag": "\"b6057bae01a91b9cb2f198027118f719-1\"",
+      "Size": "675475",
+      "Owner": {
+        "ID": "1252957949",
+        "DisplayName": "1252957949"
+      },
+      "StorageClass": "STANDARD"
+    }
+  ],
+  "CommonPrefixes": [],
+  "statusCode": 200,
+  "headers": {
+    "content-type": "application/xml",
+    "content-length": "3656",
+    "connection": "keep-alive",
+    "date": "Sun, 05 Jan 2020 04:43:26 GMT",
+    "server": "tencent-cos",
+    "x-cos-bucket-region": "ap-hongkong",
+    "x-cos-request-id": "NWUxMTY5NmVfYmVhNzM4MDlfYTQwZF9iMDVkMGM="
+  }
+}

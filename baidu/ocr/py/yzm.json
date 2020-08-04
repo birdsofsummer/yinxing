@@ -1,0 +1,15 @@
+{
+  "log_id": 5555103349305465000,
+  "direction": 0,
+  "words_result_num": 1,
+  "words_result": [
+    {
+      "words": " gi v6J",
+      "probability": {
+        "variance": 0.008336,
+        "average": 0.85681,
+        "min": 0.76551
+      }
+    }
+  ]
+}

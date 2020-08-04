@@ -1,0 +1,118 @@
+# 环境变量只能是字符串!!!!
+
+#云函数全局环境变量
+
+[env]
+[env.app]
+#CONFIG_FILE="../config.toml"
+NODE_ENV='production'
+SecretId = "AKIDlQ2ZnrCd2iI1bx5F9i9dtSn374tsacZc"
+SecretKey = ""
+Region = "ap-hongkong"
+TRAVIS_TOKEN="xxxx"
+DEPLOY_HOME="/home/travis/build/birdsofsummer/yinxing/"
+GH_TOKEN="xxx"
+
+HEADERS_MUST_HAVE="client-id,poem"            #"k,v,k,v,k,v" 默认请求头,不符则拒绝
+SIGNATURE_KEY="signature"                     #sig=xxxx  /  signature=xxxx
+### key:poem,content,timestamp ???
+SIGN_FIELDS="appkey,random,timestamp,token"   #签名字段
+TIMESTAMP_KEY="timestamp"                     #now
+REQ_VALID_SECONDS="180"                       #3分钟超时
+
+[env.token]
+TOKEN_KEY="zzzzzzzzz"
+TOKEN_LIFE="86400"
+TOKEN_AUD="aaaa"
+TOKEN_SUB="cccc"
+TOKEN_ALG="HS256"
+TOKEN_TYP="JWT"
+
+[env.sms]
+sms_test_phone="13512351234"
+sms_AppID="xxxx"
+sms_AppKey="xxx"
+sms_Sign="xxx"
+sms_templateId="123"
+sms_content="{1}为您的登录验证码，请于{2}分钟内填写。如非本人操作，请忽略本短信。"
+
+[env.code]
+CodeSources = ["ZipFile","Cos","Demo","Git","TempCos"]
+CodeSource = "Cos"
+DemoId =  ""
+
+[env.cos]
+Bucket = "ttt-1252957949"
+Prefix = "music"
+COS_HOST = "https://ttt-1252957949.cos.ap-hongkong.myqcloud.com"
+maxFileSize="6291456"
+CosBucketName = "ttt"
+CosObjectName = "/server/user.zip"
+CosBucketRegion = "ap-hongkong"
+TempCosObjectName = ""
+
+[env.git]
+GitUrl = "https://github.com/birdsofsummer/yinxing"
+GitRepository = ""
+GitUserName = "birdsofsummer"
+GitPassword = ""
+GitPasswordSecret = ""
+GitBranch = "master"
+GitDirectory = ""
+GitCommitId = ""
+GitUserNameSecret = ""
+
+[env.db]
+mongo = "mongodb+srv://....retryWrites=true&w=majority"
+DBS   = "development,test,production"
+TABLES="user_basic,user_detail,role"
+
+[ns]
+NS = [ { Namespace="test", Region="", Description = "test" },
+       { Namespace="release", Region="", Description="release" } ]
+
+[fn]
+
+[fn.file]
+TMP_DIR = "/tmp/"
+ZipFile = "/tmp/user.zip"  #...
+FN = ["user","token"]
+
+[fn.public_settings]
+
+FunctionName = 'hello'
+Description = "hello"
+#Handler =  "index.js"
+Handler =  "index.main_handler"
+Type = "Service"
+Region = "ap-hongkong"
+Namespace = "default"  
+#Publish = 'TRUE'
+#L5Enable = 'TRUE'
+Runtime =  "Nodejs8.9"
+Role =  "QCS_SCFExcuteRole"
+Timeout =  30
+MemorySize = 256  #128倍数
+
+# 云函数私有环境变量
+[fn.private_settings]
+
+[fn.private_settings.user]
+TOKEN_KEY="a"
+TOKEN_LIFE="86400"
+TOKEN_AUD="b"
+TOKEN_SUB="c"
+TOKEN_ALG="HS256"
+TOKEN_TYP="JWT"
+server_ip="1.1.1.1"
+app_name="user"
+#TENCENTCLOUD_SERVER_PORT=8080
+
+[fn.private_settings.upload]
+app_name="upload"
+server_ip="1.1.1.1"
+#TENCENTCLOUD_SERVER_PORT=8080
+
+#user = { ux=1, uy=2, }
+#token = { tx=1, ty=2, }
+#...

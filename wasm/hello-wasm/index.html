@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hello-wasm example</title>
+</head>
+<body>
+    
+</body>
+
+<script src="./index.js" > </script>
+
+
+<script>
+    env = {
+        memoryBase: 0,
+        tableBase: 0,
+        memory: new WebAssembly.Memory({
+          initial: 256
+        }),
+        table: new WebAssembly.Table({
+          initial: 0,
+          element: 'anyfunc'
+        })
+     }
+    //{env}
+    o= {
+      env: {
+        mem: new window.WebAssembly.Memory({ initial: 1 }),
+      },
+      js: { log:console.log },
+    }
+
+    init=async ()=>{
+        r=await fetch('/pkg/hello_wasm_bg.wasm')   
+        b=await r.arrayBuffer()
+        w=WebAssembly.instantiate(b,o)
+        //w.instance.exports.exported_func();
+    }
+</script>
+

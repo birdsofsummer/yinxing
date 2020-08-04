@@ -1,0 +1,82 @@
+{
+  "Resources": {
+    "default": {
+      "Type": "TencentCloud::Serverless::Namespace",
+      "pan-php": {
+        "Type": "TencentCloud::Serverless::Function",
+        "Properties": {
+          "CodeUri": "./",
+          "Type": "Event",
+          "Description": "网盘",
+          "Environment": {
+            "Variables": {
+              "Onedrive_ver": "MS",
+              "account": "",
+              "web": "",
+              "SecretId": "",
+              "SecretKey": "",
+              "sitename": "网盘",
+              "admin": "admin",
+              "Region": "hongkong",
+              "t1": "OAQABAAAAAACQN9QBRU3jT6bcBQLZNUj7AsaKdAnCvc5oj9JD9J2soFcMl1DahRFlvFTqvMKrYPVAAvqeW0KCyRVdnuNwFtVGitt5wuSNwv_wEH-0Mg900SZ8rXxZ944",
+              "t2": "x46ndpbcNSZyURBMWdjkUcWsYwvfUTjFgStR7JweK7EQ78QK5RCe4V1NHxeb_EzWmPFY7mxuif9dTUWGOAm7DY723_2rgkGQTiCim-61xNFnchGOiQ3DXMIzws7MXB5M",
+              "t3": "zZwCDwpC3Fq91_TKd4lf3H9VTYrPbvLKQj1MjVKj3DLI7mhseMVYUcg8GJh8tc4mCdKkmGgydri6fDpHgFBmHPgeCjtV6vcEAglhwMDpjo7GEHYhI7NIWwHC761LAHyN",
+              "t4": "A3U9Es9yknYjTZh9bt02_3Bo1Y81-5T1QtHt8y94xghiuSKZ6dqzijvafom_wt5QMJnEM-sNW-XxE00igFR2MbnTzTvL19AWXTnCaJ8yO3msDLV7QgkHAIrYLs_q0IS7",
+              "t5": "w7tlT1i9_P_GvwApImZoRyS0oYDygnllEwJJmc_w-CC6pyl671HcJ_T862DJmAvd_cma3x95BnjPuP33_lPW_ibvFSeZp-PQXjJOPEM5qbYYe7vaAS3nZCBBLerwEMHN",
+              "t6": "vu4b48LK1JhacaTcUM--jYhGXUuxHbjsOIE_yUiwUUTkUEzc2tR00iz-gtYNZi-DCNSLN6e3exXO6DlILp_iaONO7mZSjw9iTWvNp_X0J4nMWU8Mr9kEIVIqeWt-aItk",
+              "t7": "ypwHHhGKeon35MLsKO0TLccGNvw--3XVhIAA"
+            }
+          },
+          "Handler": "index.main_handler",
+          "MemorySize": 128,
+          "Runtime": "Php7",
+          "Timeout": 3,
+          "VpcConfig": {
+            "VpcId": "vpc-qdqc5k2p",
+            "SubnetId": "subnet-pad6l61i"
+          },
+          "Events": {
+            "timer": {
+              "Type": "Timer",
+              "Properties": {
+                "CronExpression": "*/5 * * * *",
+                "Enable": true
+              }
+            },
+            "cli-appid.cos.ap-beijing.myqcloud.com": {
+              "Type": "COS",
+              "Properties": {
+                "Bucket": "cli-appid.cos.ap-beijing.myqcloud.com",
+                "Filter": {
+                  "Prefix": "filterdir/",
+                  "Suffix": ".jpg"
+                },
+                "Events": "cos:ObjectCreated:*",
+                "Enable": true
+              }
+            },
+            "topic": {
+              "Type": "CMQ",
+              "Properties": {
+                "Name": "qname"
+              }
+            },
+            "pan-php_apigw": {
+              "Type": "APIGW",
+              "Properties": {
+                "StageName": "release",
+                "ServiceId": null,
+                "HttpMethod": "ANY"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "Globals": {
+    "Function": {
+      "Timeout": 10
+    }
+  }
+}

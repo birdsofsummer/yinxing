@@ -1,0 +1,789 @@
+{
+	"activity_name": "newpneumonia",
+	"page_name": "newpneumonia",
+	"template_name": "empty",
+	"page_id": "458",
+	"activity_id": "134",
+	"conf": {
+		"page": {
+			"title": "实时更新：新型冠状病毒肺炎疫情地图",
+			"seo": [],
+			"hasTongji": true,
+			"type": "Window",
+			"name": "页面",
+			"id": 0,
+			"sharePageUrl": "http://voice.baidu.com/act/newpneumonia/newpneumonia",
+			"shareDesc": "全国新型冠状病毒肺炎实时地图",
+			"shareTitle": "实时更新：新型冠状病毒肺炎疫情地图",
+			"shareImg": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/images/81dc5c7c985be3d3cd4c5e66bd27b85e.png?size=160*160",
+			"children": [
+				{
+					"backgroundColor": "#00bac5",
+					"title": "新型冠状病毒肺炎",
+					"subtitle": "疫情通报",
+					"mapLastUpdatedTime": "2020.01.26 16:51",
+					"caseList": [
+						{
+							"area": "湖北",
+							"unconfirmed": "",
+							"confirmed": "1058",
+							"crued": "42"
+						},
+						{
+							"area": "浙江",
+							"unconfirmed": "",
+							"crued": "1",
+							"confirmed": "104"
+						},
+						{
+							"area": "广东",
+							"unconfirmed": "1",
+							"confirmed": "98",
+							"crued": "2"
+						},
+						{
+							"area": "河南",
+							"unconfirmed": "42",
+							"confirmed": "83"
+						},
+						{
+							"area": "重庆",
+							"unconfirmed": "13",
+							"confirmed": "75"
+						},
+						{
+							"area": "湖南",
+							"unconfirmed": "",
+							"confirmed": "69"
+						},
+						{
+							"area": "安徽",
+							"unconfirmed": "4",
+							"confirmed": "60"
+						},
+						{
+							"area": "北京",
+							"unconfirmed": "",
+							"confirmed": "54",
+							"crued": "2"
+						},
+						{
+							"area": "山东",
+							"unconfirmed": "11",
+							"confirmed": "48"
+						},
+						{
+							"area": "四川",
+							"confirmed": "44"
+						},
+						{
+							"area": "上海",
+							"unconfirmed": "72",
+							"confirmed": "40",
+							"crued": "1"
+						},
+						{
+							"area": "江西",
+							"unconfirmed": "",
+							"confirmed": "36"
+						},
+						{
+							"area": "广西",
+							"unconfirmed": "",
+							"confirmed": "33"
+						},
+						{
+							"area": "江苏",
+							"unconfirmed": "",
+							"crued": "1",
+							"confirmed": "31"
+						},
+						{
+							"area": "福建",
+							"unconfirmed": "37",
+							"confirmed": "29"
+						},
+						{
+							"area": "海南",
+							"unconfirmed": "",
+							"confirmed": "22"
+						},
+						{
+							"unconfirmed": "",
+							"area": "陕西",
+							"confirmed": "22"
+						},
+						{
+							"area": "辽宁",
+							"unconfirmed": "",
+							"confirmed": "21"
+						},
+						{
+							"area": "黑龙江",
+							"unconfirmed": "2",
+							"confirmed": "15"
+						},
+						{
+							"area": "河北",
+							"unconfirmed": "",
+							"confirmed": "13"
+						},
+						{
+							"area": "天津",
+							"confirmed": "13"
+						},
+						{
+							"area": "云南",
+							"unconfirmed": "",
+							"confirmed": "11"
+						},
+						{
+							"area": "山西",
+							"unconfirmed": "",
+							"confirmed": "9"
+						},
+						{
+							"unconfirmed": "1",
+							"area": "甘肃",
+							"confirmed": "7"
+						},
+						{
+							"area": "内蒙古",
+							"confirmed": "7"
+						},
+						{
+							"area": "香港",
+							"confirmed": "5",
+							"unconfirmed": "107"
+						},
+						{
+							"area": "贵州",
+							"unconfirmed": "",
+							"confirmed": "5"
+						},
+						{
+							"area": "澳门",
+							"unconfirmed": "",
+							"confirmed": "5"
+						},
+						{
+							"area": "宁夏",
+							"unconfirmed": "1",
+							"confirmed": "4"
+						},
+						{
+							"area": "吉林",
+							"unconfirmed": "",
+							"confirmed": "4"
+						},
+						{
+							"unconfirmed": "",
+							"area": "新疆",
+							"confirmed": "4"
+						},
+						{
+							"area": "台湾",
+							"unconfirmed": "228",
+							"confirmed": "3"
+						},
+						{
+							"area": "青海",
+							"confirmed": "1",
+							"unconfirmed": "3"
+						}
+					],
+					"caseOutsideList": [
+						{
+							"area": "泰国",
+							"unconfirmed": "",
+							"crued": "2",
+							"confirmed": "7"
+						},
+						{
+							"area": "新加坡",
+							"unconfirmed": "7",
+							"confirmed": "4"
+						},
+						{
+							"area": "澳大利亚",
+							"confirmed": "4"
+						},
+						{
+							"unconfirmed": "",
+							"crued": "",
+							"area": "马来西亚",
+							"confirmed": "4"
+						},
+						{
+							"area": "日本",
+							"unconfirmed": "",
+							"crued": "1",
+							"confirmed": "3"
+						},
+						{
+							"confirmed": "3",
+							"unconfirmed": "",
+							"crued": "",
+							"area": "法国"
+						},
+						{
+							"area": "韩国",
+							"unconfirmed": "",
+							"confirmed": "3"
+						},
+						{
+							"area": "美国",
+							"unconfirmed": "",
+							"confirmed": "3"
+						},
+						{
+							"confirmed": "2",
+							"unconfirmed": "",
+							"area": "越南"
+						},
+						{
+							"confirmed": "1",
+							"unconfirmed": "",
+							"crued": "",
+							"area": "尼泊尔"
+						},
+						{
+							"confirmed": "1",
+							"unconfirmed": "",
+							"crued": "",
+							"area": "加拿大"
+						},
+						{
+							"area": "菲律宾",
+							"confirmed": "",
+							"unconfirmed": "4"
+						},
+						{
+							"confirmed": "",
+							"unconfirmed": "4",
+							"area": "英国"
+						},
+						{
+							"unconfirmed": "3",
+							"crued": "",
+							"area": "德国"
+						},
+						{
+							"unconfirmed": "2",
+							"area": "芬兰"
+						},
+						{
+							"confirmed": "",
+							"unconfirmed": "1",
+							"area": "意大利"
+						},
+						{
+							"confirmed": "",
+							"unconfirmed": "1",
+							"crued": "",
+							"area": "葡萄牙"
+						}
+					],
+					"dataSource": "数据来自官方通报 全国与各省通报数据可能存在差异",
+					"hotwords": [
+						{
+							"type": "2",
+							"query": "新型冠状病毒",
+							"url": "https://m.baidu.com/s?word= %e6%96%b0%e5%9e%8b%e5%86%a0%e7%8a%b6%e7%97%85%e6%af%92&sa=ovirus_rs_1"
+						},
+						{
+							"type": "1",
+							"query": "新型肺炎的谣言",
+							"url": "https://m.baidu.com/s?word= %e6%96%b0%e5%9e%8b%e8%82%ba%e7%82%8e%e7%9a%84%e8%b0%a3%e8%a8%80&sa=ovirus_rs_2"
+						},
+						{
+							"type": "1",
+							"query": "疫情防控举报",
+							"url": "https://m.baidu.com/s?word=%e7%96%ab%e6%83%85%e9%98%b2%e6%8e%a7%e4%b8%be%e6%8a%a5&sa=ovirus_rs_3"
+						},
+						{
+							"type": "0",
+							"query": "武汉雷神山医院",
+							"url": "https://m.baidu.com/s?word=%e6%ad%a6%e6%b1%89%e9%9b%b7%e7%a5%9e%e5%b1%b1%e5%8c%bb%e9%99%a2&sa=ovirus_rs_4"
+						},
+						{
+							"type": "0",
+							"query": "如何正确佩戴口罩",
+							"url": "https://m.baidu.com/s?word=%e5%a6%82%e4%bd%95%e6%ad%a3%e7%a1%ae%e4%bd%a9%e6%88%b4%e5%8f%a3%e7%bd%a9&sa=ovirus_rs_5"
+						},
+						{
+							"type": "0",
+							"query": "湖北襄阳辟谣",
+							"url": "https://m.baidu.com/s?word=%e6%b9%96%e5%8c%97%e8%a5%84%e9%98%b3%e8%be%9f%e8%b0%a3&sa=ovirus_rs_6"
+						},
+						{
+							"type": "0",
+							"query": "武汉捐赠",
+							"url": "https://m.baidu.com/s?word= %e6%ad%a6%e6%b1%89%e6%8d%90%e8%b5%a0&sa=ovirus_rs_7"
+						},
+						{
+							"type": "0",
+							"query": "什么是一级响应",
+							"url": "https://m.baidu.com/s?word=%e4%bb%80%e4%b9%88%e6%98%af%e4%b8%80%e7%ba%a7%e5%93%8d%e5%ba%94&sa=ovirus_rs_8"
+						},
+						{
+							"type": "0",
+							"query": "全国旅行团队游暂停",
+							"url": "https://m.baidu.com/s?word=%e5%85%a8%e5%9b%bd%e6%97%85%e8%a1%8c%e5%9b%a2%e9%98%9f%e6%b8%b8%e6%9a%82%e5%81%9c&sa=ovirus_rs_9"
+						},
+						{
+							"type": "0",
+							"query": "首都机场巴士暂停",
+							"url": "https://m.baidu.com/s?word=%e9%a6%96%e9%83%bd%e6%9c%ba%e5%9c%ba%e5%b7%b4%e5%a3%ab%e6%9a%82%e5%81%9c&sa=ovirus_rs_10"
+						}
+					],
+					"queryImg": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/images/8ae57cc26ce169fb7e5f1552d401a77b.png?size=895*142",
+					"query": "上百度APP搜索 新型冠状病毒肺炎",
+					"queryLink": "https://m.baidu.com/s?word=%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E7%97%85%E6%AF%92%E8%82%BA%E7%82%8E&sa=ovirus_searchbox",
+					"type": "Virus",
+					"id": "3f2cgxz",
+					"name": "肺炎2020-3f2cgxz",
+					"version": "1.0.129",
+					"children": [],
+					"top": "NaN",
+					"left": "NaN",
+					"summaryDataIn": {
+						"unconfirmed": "2684",
+						"confirmed": "2031",
+						"died": "56",
+						"cured": "49"
+					},
+					"summaryDataOut": {
+						"died": "0",
+						"cured": "3",
+						"confirmed": "35",
+						"unconfirmed": "22"
+					},
+					"externalButtons": [
+						{
+							"text": "查看迁徙地图",
+							"url": "https://qianxi.baidu.com/?from=shoubai",
+							"type": "1"
+						},
+						{
+							"text": "全国发热门诊",
+							"url": "https://ugc.map.baidu.com/static/specialmap/index.html?spId=39&t=20200125",
+							"type": "0"
+						}
+					],
+					"share": {
+						"title": "实时更新：新型冠状病毒肺炎疫情地图",
+						"content": "全国新型冠状病毒肺炎实时地图",
+						"icon": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/images/81dc5c7c985be3d3cd4c5e66bd27b85e.png?size=160*160",
+						"url": "http://voice.baidu.com/act/newpneumonia/newpneumonia",
+						"type": "url"
+					},
+					"hotwordsDuros": "疫情地图$2|武汉疫情$2|武汉新闻$1|武汉肺炎|新型冠状病毒|冠状病毒|武汉封城|蝙蝠|急诊科医生",
+					"mapSrc": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/images/907a49971826ea878f502d5f0fd5740f.png?size=1050*803"
+				}
+			]
+		},
+		"component": [
+			{
+				"backgroundColor": "#00bac5",
+				"title": "新型冠状病毒肺炎",
+				"subtitle": "疫情通报",
+				"mapLastUpdatedTime": "2020.01.26 16:51",
+				"caseList": [
+					{
+						"area": "湖北",
+						"unconfirmed": "",
+						"confirmed": "1058",
+						"crued": "42"
+					},
+					{
+						"area": "浙江",
+						"unconfirmed": "",
+						"crued": "1",
+						"confirmed": "104"
+					},
+					{
+						"area": "广东",
+						"unconfirmed": "1",
+						"confirmed": "98",
+						"crued": "2"
+					},
+					{
+						"area": "河南",
+						"unconfirmed": "42",
+						"confirmed": "83"
+					},
+					{
+						"area": "重庆",
+						"unconfirmed": "13",
+						"confirmed": "75"
+					},
+					{
+						"area": "湖南",
+						"unconfirmed": "",
+						"confirmed": "69"
+					},
+					{
+						"area": "安徽",
+						"unconfirmed": "4",
+						"confirmed": "60"
+					},
+					{
+						"area": "北京",
+						"unconfirmed": "",
+						"confirmed": "54",
+						"crued": "2"
+					},
+					{
+						"area": "山东",
+						"unconfirmed": "11",
+						"confirmed": "48"
+					},
+					{
+						"area": "四川",
+						"confirmed": "44"
+					},
+					{
+						"area": "上海",
+						"unconfirmed": "72",
+						"confirmed": "40",
+						"crued": "1"
+					},
+					{
+						"area": "江西",
+						"unconfirmed": "",
+						"confirmed": "36"
+					},
+					{
+						"area": "广西",
+						"unconfirmed": "",
+						"confirmed": "33"
+					},
+					{
+						"area": "江苏",
+						"unconfirmed": "",
+						"crued": "1",
+						"confirmed": "31"
+					},
+					{
+						"area": "福建",
+						"unconfirmed": "37",
+						"confirmed": "29"
+					},
+					{
+						"area": "海南",
+						"unconfirmed": "",
+						"confirmed": "22"
+					},
+					{
+						"unconfirmed": "",
+						"area": "陕西",
+						"confirmed": "22"
+					},
+					{
+						"area": "辽宁",
+						"unconfirmed": "",
+						"confirmed": "21"
+					},
+					{
+						"area": "黑龙江",
+						"unconfirmed": "2",
+						"confirmed": "15"
+					},
+					{
+						"area": "河北",
+						"unconfirmed": "",
+						"confirmed": "13"
+					},
+					{
+						"area": "天津",
+						"confirmed": "13"
+					},
+					{
+						"area": "云南",
+						"unconfirmed": "",
+						"confirmed": "11"
+					},
+					{
+						"area": "山西",
+						"unconfirmed": "",
+						"confirmed": "9"
+					},
+					{
+						"unconfirmed": "1",
+						"area": "甘肃",
+						"confirmed": "7"
+					},
+					{
+						"area": "内蒙古",
+						"confirmed": "7"
+					},
+					{
+						"area": "香港",
+						"confirmed": "5",
+						"unconfirmed": "107"
+					},
+					{
+						"area": "贵州",
+						"unconfirmed": "",
+						"confirmed": "5"
+					},
+					{
+						"area": "澳门",
+						"unconfirmed": "",
+						"confirmed": "5"
+					},
+					{
+						"area": "宁夏",
+						"unconfirmed": "1",
+						"confirmed": "4"
+					},
+					{
+						"area": "吉林",
+						"unconfirmed": "",
+						"confirmed": "4"
+					},
+					{
+						"unconfirmed": "",
+						"area": "新疆",
+						"confirmed": "4"
+					},
+					{
+						"area": "台湾",
+						"unconfirmed": "228",
+						"confirmed": "3"
+					},
+					{
+						"area": "青海",
+						"confirmed": "1",
+						"unconfirmed": "3"
+					}
+				],
+				"caseOutsideList": [
+					{
+						"area": "泰国",
+						"unconfirmed": "",
+						"crued": "2",
+						"confirmed": "7"
+					},
+					{
+						"area": "新加坡",
+						"unconfirmed": "7",
+						"confirmed": "4"
+					},
+					{
+						"area": "澳大利亚",
+						"confirmed": "4"
+					},
+					{
+						"unconfirmed": "",
+						"crued": "",
+						"area": "马来西亚",
+						"confirmed": "4"
+					},
+					{
+						"area": "日本",
+						"unconfirmed": "",
+						"crued": "1",
+						"confirmed": "3"
+					},
+					{
+						"confirmed": "3",
+						"unconfirmed": "",
+						"crued": "",
+						"area": "法国"
+					},
+					{
+						"area": "韩国",
+						"unconfirmed": "",
+						"confirmed": "3"
+					},
+					{
+						"area": "美国",
+						"unconfirmed": "",
+						"confirmed": "3"
+					},
+					{
+						"confirmed": "2",
+						"unconfirmed": "",
+						"area": "越南"
+					},
+					{
+						"confirmed": "1",
+						"unconfirmed": "",
+						"crued": "",
+						"area": "尼泊尔"
+					},
+					{
+						"confirmed": "1",
+						"unconfirmed": "",
+						"crued": "",
+						"area": "加拿大"
+					},
+					{
+						"area": "菲律宾",
+						"confirmed": "",
+						"unconfirmed": "4"
+					},
+					{
+						"confirmed": "",
+						"unconfirmed": "4",
+						"area": "英国"
+					},
+					{
+						"unconfirmed": "3",
+						"crued": "",
+						"area": "德国"
+					},
+					{
+						"unconfirmed": "2",
+						"area": "芬兰"
+					},
+					{
+						"confirmed": "",
+						"unconfirmed": "1",
+						"area": "意大利"
+					},
+					{
+						"confirmed": "",
+						"unconfirmed": "1",
+						"crued": "",
+						"area": "葡萄牙"
+					}
+				],
+				"dataSource": "数据来自官方通报 全国与各省通报数据可能存在差异",
+				"hotwords": [
+					{
+						"type": "2",
+						"query": "新型冠状病毒",
+						"url": "https://m.baidu.com/s?word= %e6%96%b0%e5%9e%8b%e5%86%a0%e7%8a%b6%e7%97%85%e6%af%92&sa=ovirus_rs_1"
+					},
+					{
+						"type": "1",
+						"query": "新型肺炎的谣言",
+						"url": "https://m.baidu.com/s?word= %e6%96%b0%e5%9e%8b%e8%82%ba%e7%82%8e%e7%9a%84%e8%b0%a3%e8%a8%80&sa=ovirus_rs_2"
+					},
+					{
+						"type": "1",
+						"query": "疫情防控举报",
+						"url": "https://m.baidu.com/s?word=%e7%96%ab%e6%83%85%e9%98%b2%e6%8e%a7%e4%b8%be%e6%8a%a5&sa=ovirus_rs_3"
+					},
+					{
+						"type": "0",
+						"query": "武汉雷神山医院",
+						"url": "https://m.baidu.com/s?word=%e6%ad%a6%e6%b1%89%e9%9b%b7%e7%a5%9e%e5%b1%b1%e5%8c%bb%e9%99%a2&sa=ovirus_rs_4"
+					},
+					{
+						"type": "0",
+						"query": "如何正确佩戴口罩",
+						"url": "https://m.baidu.com/s?word=%e5%a6%82%e4%bd%95%e6%ad%a3%e7%a1%ae%e4%bd%a9%e6%88%b4%e5%8f%a3%e7%bd%a9&sa=ovirus_rs_5"
+					},
+					{
+						"type": "0",
+						"query": "湖北襄阳辟谣",
+						"url": "https://m.baidu.com/s?word=%e6%b9%96%e5%8c%97%e8%a5%84%e9%98%b3%e8%be%9f%e8%b0%a3&sa=ovirus_rs_6"
+					},
+					{
+						"type": "0",
+						"query": "武汉捐赠",
+						"url": "https://m.baidu.com/s?word= %e6%ad%a6%e6%b1%89%e6%8d%90%e8%b5%a0&sa=ovirus_rs_7"
+					},
+					{
+						"type": "0",
+						"query": "什么是一级响应",
+						"url": "https://m.baidu.com/s?word=%e4%bb%80%e4%b9%88%e6%98%af%e4%b8%80%e7%ba%a7%e5%93%8d%e5%ba%94&sa=ovirus_rs_8"
+					},
+					{
+						"type": "0",
+						"query": "全国旅行团队游暂停",
+						"url": "https://m.baidu.com/s?word=%e5%85%a8%e5%9b%bd%e6%97%85%e8%a1%8c%e5%9b%a2%e9%98%9f%e6%b8%b8%e6%9a%82%e5%81%9c&sa=ovirus_rs_9"
+					},
+					{
+						"type": "0",
+						"query": "首都机场巴士暂停",
+						"url": "https://m.baidu.com/s?word=%e9%a6%96%e9%83%bd%e6%9c%ba%e5%9c%ba%e5%b7%b4%e5%a3%ab%e6%9a%82%e5%81%9c&sa=ovirus_rs_10"
+					}
+				],
+				"queryImg": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/images/8ae57cc26ce169fb7e5f1552d401a77b.png?size=895*142",
+				"query": "上百度APP搜索 新型冠状病毒肺炎",
+				"queryLink": "https://m.baidu.com/s?word=%E6%96%B0%E5%9E%8B%E5%86%A0%E7%8A%B6%E7%97%85%E6%AF%92%E8%82%BA%E7%82%8E&sa=ovirus_searchbox",
+				"type": "Virus",
+				"id": "3f2cgxz",
+				"name": "肺炎2020-3f2cgxz",
+				"version": "1.0.129",
+				"children": [],
+				"top": "NaN",
+				"left": "NaN",
+				"summaryDataIn": {
+					"unconfirmed": "2684",
+					"confirmed": "2031",
+					"died": "56",
+					"cured": "49"
+				},
+				"summaryDataOut": {
+					"died": "0",
+					"cured": "3",
+					"confirmed": "35",
+					"unconfirmed": "22"
+				},
+				"externalButtons": [
+					{
+						"text": "查看迁徙地图",
+						"url": "https://qianxi.baidu.com/?from=shoubai",
+						"type": "1"
+					},
+					{
+						"text": "全国发热门诊",
+						"url": "https://ugc.map.baidu.com/static/specialmap/index.html?spId=39&t=20200125",
+						"type": "0"
+					}
+				],
+				"share": {
+					"title": "实时更新：新型冠状病毒肺炎疫情地图",
+					"content": "全国新型冠状病毒肺炎实时地图",
+					"icon": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/images/81dc5c7c985be3d3cd4c5e66bd27b85e.png?size=160*160",
+					"url": "http://voice.baidu.com/act/newpneumonia/newpneumonia",
+					"type": "url"
+				},
+				"hotwordsDuros": "疫情地图$2|武汉疫情$2|武汉新闻$1|武汉肺炎|新型冠状病毒|冠状病毒|武汉封城|蝙蝠|急诊科医生",
+				"mapSrc": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/images/907a49971826ea878f502d5f0fd5740f.png?size=1050*803"
+			}
+		],
+		"bundle": {
+			"script": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/bundles/105903b0.fbe676fc.js",
+			"style": "https://mms-res.cdn.bcebos.com/mms-res/voicefe/captain/bundles/105903b0.92196843.css"
+		}
+	},
+	"bsData": {
+		"os": "android",
+		"app": null,
+		"appversion": null,
+		"browser": "",
+		"userInfo": {
+			"isLogin": true
+		}
+	},
+	"extData": {
+		"pvid": "1580028972945416255",
+		"rqid": "1580028972945416255",
+		"qid": "1580028972945416255",
+		"psid": "0",
+		"sid": "0",
+		"baiduid": "D040F01321BD894CCB998A318B1B8F8C",
+		"fr": "self",
+		"oq": "-",
+		"q": "-",
+		"cat": "captain",
+		"pid": 385,
+		"page": "newpneumonia_newpneumonia",
+		"passid": "-",
+		"ratio": "1366*768",
+		"browser": "firefox73.0",
+		"cookie": "D040F01321BD894CCB998A318B1B8F8C",
+		"os": "phone",
+		"cuid": "-"
+	},
+	"bundles": [
+		"Virus/1.0.129/Virus"
+	]
+}

@@ -1,0 +1,14 @@
+package zzz;
+option optimize_for = LITE_RUNTIME;
+
+message Account{
+    required string accountName = 1; 
+    required string pwd = 2; 
+}
+
+message AccountList{
+    required int32 index = 1;
+    repeated Account list = 2;
+}
+
+

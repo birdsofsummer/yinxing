@@ -1,0 +1,24 @@
+#https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+#https://docs.travis-ci.com/user/environment-variables/
+
+language: node_js
+node_js:
+    - 8
+    - 10
+    - 12
+env:
+  - DB=mongo
+  - SH=bash
+  - PACKAGE_VERSION="1.0.*"   
+  global:
+    - CAMPFIRE_TOKEN=abc123
+    - TIMEOUT=1000
+  jobs:
+    - USE_NETWORK=true
+before_install:
+    # - export ccc=111
+install:
+    #- npm install
+    #- npm publish
+script: 
+    - ./bin/publish.sh

@@ -1,0 +1,77 @@
+{
+			"RequestId": "7e4c0197-fedf-49dc-a233-2b930c119856",
+			"ModTime": "2019-12-02 18:11:06",
+			"CodeInfo": "",
+			"Description": "..",
+			"Triggers": [
+				{
+					"ModTime": "2019-11-07 11:12:27",
+					"Type": "apigw",
+					"TriggerDesc": "{\"api\":{\"apiId\":\"api-khzyvk94\",\"authRequired\":\"FALSE\",\"isIntegratedResponse\":\"TRUE\",\"requestConfig\":{\"method\":\"ANY\"}},\"release\":{\"environmentName\":\"release\"},\"service\":{\"serviceId\":\"service-857bjdlw\",\"serviceName\":\"SCF_API_SERVICE\",\"subDomain\":\"https://service-857bjdlw-1252957949.ap-hongkong.apigateway.myqcloud.com/release/pan-php\"}}",
+					"TriggerName": "pan-php_apigw",
+					"AddTime": "2019-11-07 11:12:27",
+					"Enable": 1,
+					"CustomArgument": ""
+				}
+			],
+			"Handler": "index.main_handler",
+			"CodeSize": 83731,
+			"Timeout": 30,
+			"FunctionVersion": "$LATEST",
+			"MemorySize": 256,
+			"Runtime": "Php7",
+			"FunctionName": "pan-php",
+			"VpcConfig": {
+				"VpcId": "",
+				"SubnetId": ""
+			},
+			"UseGpu": "FALSE",
+			"Environment": {
+				"Variables": [
+					{
+						"Key": "yy",
+						"Value": "2"
+					},
+					{
+						"Key": "xx",
+						"Value": "1"
+					}
+				]
+			},
+			"CodeResult": "success",
+			"CodeError": "",
+			"ErrNo": 0,
+			"Namespace": "default",
+			"Role": "QCS_SCFExcuteRole",
+			"InstallDependency": "FALSE",
+			"Status": "Active",
+			"StatusDesc": "",
+			"ClsLogsetId": "",
+			"ClsTopicId": "",
+			"FunctionId": "lam-r50u1q2q",
+			"Tags": [],
+			"EipConfig": {
+				"EipFixed": "FALSE",
+				"Eips": []
+			},
+			"AccessInfo": {
+				"Host": "",
+				"Vip": ""
+			},
+			"Type": "Event",
+			"DeadLetterConfig": {
+				"Type": "",
+				"Name": "",
+				"FilterType": ""
+			},
+			"Layers": [],
+			"L5Enable": "TRUE",
+			"AddTime": "2019-11-07 11:11:14",
+			"PublicNetConfig": {
+				"PublicNetStatus": "DISABLE",
+				"EipConfig": {
+					"EipStatus": "DISABLE",
+					"EipAddress": []
+				}
+			}
+}

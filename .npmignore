@@ -1,0 +1,15 @@
+*.db
+rsocket
+mq
+node_modules/
+tmp/*
+*.zip
+*.db
+passport/weibo/json/emotion/*
+passport/weibo/json/
+passport/wx/SampleCode/
+spider
+db/dict
+spider/zdic/
+example/upload/www/workbox-v4.3.0
+

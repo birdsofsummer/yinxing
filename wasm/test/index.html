@@ -1,0 +1,45 @@
+<script>
+    const get=async (u)=>{
+      const  r1=await fetch(u)
+      const  r2=await r1.arrayBuffer() 
+      const  r3=await WebAssembly.instantiate(r2)
+      return r3
+    }
+    const test=async ()=>{
+       r=await get("add.wasm")
+       console.log(r)
+       console.log(r.instance.exports.add(1,2))
+    }
+    test()
+</script>
+
+<script type="module">
+    //https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import
+    //was blocked because of a disallowed MIME type (“application/octet-stream”).
+    import * as M from '/wasm/add.wasm';
+    const test=()=>{
+        console.log(M.add(10, 13)); // 23
+    }
+    test()
+</script>
+
+
+<script type="module">
+    const test=async ()=>{
+         let c = await import('/add.js');
+         let d=c.add(1,2)
+         console.log(c,d)
+     }
+     //test()
+</script>
+
+
+<script type="module">
+    import('/add.js').then(x=>{
+        console.log(x,x.add(1,20))
+    })
+    import('/wasm/add1.wasm').then(x=>{
+            //was blocked because of a disallowed MIME type (“application/octet-stream”).
+             console.log(x)
+    })
+</script>

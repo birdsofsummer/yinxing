@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <base target="_blank" />
+        <!--base href="/release/user/" / -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="UTF-8">
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <meta name="referrer" content="never">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>admin</title>
+
+        <link rel="shortcut icon" href="static/img/2.jpg" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="static/css/1.css" />
+        <link rel="shortcut icon" href="https://img9.doubanio.com/view/group/sqxs/public/3bd4fe9af2b65f6.jpg" type="image/x-icon" />
+        <link href="https://spin.js.org/spin.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@2.1.7/dist/vuetify.min.css">
+        <link href="https://cdn.bootcss.com/limonte-sweetalert2/8.11.8/sweetalert2.min.css" rel="stylesheet">
+
+        <style>
+            *{
+                padding:0;
+                margin:0;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <main>
+            <v-app id="app" data-app="app">
+
+            <v-divider inset ></v-divider>
+                <section>
+                      <v-form>
+                        <v-container>
+                          <v-row>
+
+                            <v-col cols="12" sm="6" md="3">
+                              <v-text-field
+                                label="usename"
+                              ></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" sm="6" md="3">
+                              <v-text-field
+                                label="password"
+                                placeholder="password"
+                              ></v-text-field>
+                            </v-col>
+
+                            <v-col cols="12" sm="6" md="3">
+                              <v-text-field
+                                label="phone"
+                                phone
+                              ></v-text-field>
+                            </v-col>
+
+               
+                          </v-row>
+                        </v-container>
+                      </v-form>
+
+
+
+                </section>
+
+
+
+                <section>
+
+                  <v-card>
+                    <v-card-title>
+                      User
+                      <v-spacer></v-spacer>
+                      <v-text-field
+                        v-model="search"
+                        append-icon="search"
+                        label="Search"
+                        single-line
+                        hide-details
+                      ></v-text-field>
+                    </v-card-title>
+
+                    <v-data-table
+                        :search="search"
+                        show-select
+                        v-model="selected_user"
+                        :headers="headers"
+                        :items="user"
+                        item-key="_id"
+                        sort-by="_id"
+                        :items-per-page="15"
+                        class="elevation-1"
+                      >
+    <template v-slot:top>
+
+
+
+      <v-toolbar flat color="white">
+
+        <v-toolbar-title>User</v-toolbar-title>
+
+        <v-divider class="mx-4" inset vertical ></v-divider>
+
+        <v-spacer></v-spacer>
+
+        <v-dialog v-model="dialog" max-width="500px">
+          <template v-slot:activator="{ on }">
+          <div class="text-center">
+            <!--
+            <v-btn color="primary" dark class="mb-2" v-on="on">New Item</v-btn>
+
+            -->
+            
+            <v-btn class="mx-2" fab dark small color="primary" @click="show_dels" :disabled="selected_user.length==0">
+              <v-icon dark>mdi-minus</v-icon>
+            </v-btn>
+            <v-btn class="mx-2" fab dark small color="indigo" v-on="on">
+              <v-icon dark>mdi-plus</v-icon>
+            </v-btn>
+
+          </div>                    
+          </template>
+
+          <v-card>
+            <v-card-title>
+              <span class="headline">{{ formTitle }}</span>
+            </v-card-title>
+
+            <v-card-text>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.username" label="username"></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.password" label="密码"></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.phone" label="手机"></v-text-field>
+                  </v-col>
+
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.qq" label="QQ"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.grade" label="年级"></v-text-field>
+                  </v-col>
+                  <v-col cols="12" sm="6" md="4">
+                    <v-text-field v-model="editedItem.email" label="email"></v-text-field>
+                  </v-col>
+
+                </v-row>
+              </v-container>
+            </v-card-text>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
+              <v-btn color="blue darken-1" text @click="save">Save</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+
+
+      </v-toolbar>
+    </template>
+
+                        <template v-slot:item.action="{ item }">
+                              <v-icon small class="mr-2" @click="editItem(item)" > edit </v-icon>
+                              <v-icon small @click="deleteItem(item)" > delete </v-icon>
+                              <v-icon small @click="resetItem(item)" >  mdi-anchor  </v-icon>
+                              <v-icon small @click="resetItem(item)" >  mdi-pencil</v-icon>
+                              <v-icon small @click="resetItem(item)" >  mdi-pencil</v-icon>
+                              <v-icon small @click="resetItem(item)" >  mdi-pencil</v-icon>
+                              <v-icon small @click="resetItem(item)" >  mdi-pencil</v-icon>
+                        </template>
+
+                        <template v-slot:no-data>
+                              <v-btn color="primary" @click="list_user">Reload</v-btn>
+                        </template>
+
+
+                    </v-data-table>                
+                  </v-card>
+
+
+                </section>
+            </v-app>
+        </main>
+
+
+        <!--section>
+            <p id="test"></p>
+            1234
+            <img src="static/1.jpg" />
+            <img src="static/img/2.jpg" />
+        </section-->
+
+    </body>
+    
+    <script src="https://cdn.bootcss.com/rxjs/6.5.2/rxjs.umd.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.bootcss.com/ramda/0.26.1/ramda.min.js"></script>
+    <script src="https://cdn.bootcss.com/localforage/1.7.3/localforage.min.js"></script>
+    <script src="https://cdn.bootcss.com/superagent/4.1.0-beta.1/superagent.min.js"></script>
+    <script src="https://cdn.bootcss.com/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.bootcss.com/spin.js/2.3.2/spin.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/babel-polyfill/dist/polyfill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.1.7/dist/vuetify.min.js"></script>
+ 
+    <script src="js/1.js"></script>
+</html>

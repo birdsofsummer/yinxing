@@ -1,0 +1,13 @@
+{
+	"@type": "env_var",
+	"@href": "/repo/11957886/env_var/9255423d-d068-41f1-9188-e38d2f7b336e",
+	"@representation": "standard",
+	"@permissions": {
+		"read": true,
+		"write": true
+	},
+	"id": "9255423d-d068-41f1-9188-e38d2f7b336e",
+	"name": "NPM_TOKEN",
+	"public": false,
+	"branch": null
+}
