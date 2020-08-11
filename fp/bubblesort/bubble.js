@@ -20,7 +20,8 @@ const repeat=(fn,x,n=1)=>{
     }
     return r
 }
-const repeat1=(fn,x,n=1)=> n==0 ? x : repeat(fn,fn(x),n-1)
+
+const repeat1=(fn,x,n=1)=> n==0 ? x : repeat1(fn,fn(x),n-1)
 
 const sort1=(d=[])=>repeat(sort,d,d.length)
 
