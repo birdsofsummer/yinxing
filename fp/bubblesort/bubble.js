@@ -1,4 +1,17 @@
-//冒泡排序
+// n=2
+// fn(fn(x))
+const repeat=(fn,x,n=1)=>{
+    let r=x
+    for (let i=0;i<n;i++){
+        r=fn(r)
+    }
+    return r
+}
+const repeat1=(fn,x,n=1)=> n==0 ? x : repeat1(fn,fn(x),n-1)
+
+
+
+//一轮冒泡
 const sort=(d=[])=>{
     if (d.length<2) {
         return d
@@ -11,18 +24,6 @@ const sort=(d=[])=>{
         return [h1,...sort([h2,...t])]
     }
 }
-// n=2
-// fn(fn(x))
-const repeat=(fn,x,n=1)=>{
-    let r=x
-    for (let i=0;i<n;i++){
-        r=fn(r)
-    }
-    return r
-}
-
-const repeat1=(fn,x,n=1)=> n==0 ? x : repeat1(fn,fn(x),n-1)
-
 const sort1=(d=[])=>repeat(sort,d,d.length)
 
 const test=()=>{
